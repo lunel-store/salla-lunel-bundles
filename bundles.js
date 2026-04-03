@@ -80,6 +80,7 @@
         `;
     }
 
+    // FIXED: Navigates to href when clicked
     function attachClickHandler() {
         const grid = document.querySelector(`#${LUNEL_BUNDLES_ROOT_ID} .lunel-bundles__grid`);
         if (!grid) return;
@@ -88,18 +89,25 @@
             const card = e.target.closest('.lunel-bundles__card');
             if (!card) return;
 
-            e.preventDefault();
             const bundleId = card.dataset.bundleId;
-
+            const href = card.getAttribute('href');
+            
+            // Update selection UI
             grid.querySelectorAll('.lunel-bundles__card').forEach((el) => {
                 const isSelected = el.dataset.bundleId === bundleId;
                 el.classList.toggle('lunel-bundles__card--selected', isSelected);
                 el.setAttribute('aria-pressed', isSelected);
             });
 
+            // Trigger custom event
             window.dispatchEvent(new CustomEvent('lunelBundleSelected', {
                 detail: { bundleId: bundleId }
             }));
+
+            // Navigate to the link (if it's a valid URL and not "#")
+            if (href && href !== '#') {
+                window.location.href = href;
+            }
         });
     }
 
