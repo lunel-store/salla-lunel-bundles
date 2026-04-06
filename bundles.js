@@ -8,6 +8,9 @@
     const LUNEL_BUNDLES_ROOT_ID = 'lunel-bundles-root';
     const BUNDLES_BY_PRODUCT_ID = window.LUNEL_BUNDLES_CONFIG || {};
 
+    console.log('Lunel Bundles: Script loaded');
+    console.log('Lunel Bundles: Config =', BUNDLES_BY_PRODUCT_ID);
+
     // Early exit if no config exists
     if (Object.keys(BUNDLES_BY_PRODUCT_ID).length === 0) {
         console.warn('Lunel Bundles: No configuration found.');
@@ -27,40 +30,39 @@
     }
 
     function getInsertionPoint() {
-        // Strategy 1: Insert after the price element directly
+        // Strategy 1: Find the price element and insert after its container
         const priceEl = document.querySelector('.total-price-single');
+        console.log('Lunel Bundles: Price element found?', priceEl);
+        
         if (priceEl) {
-            // Get the container that holds the price and surrounding elements
-            const priceContainer = priceEl.closest('.flex.flex-wrap');
-            if (priceContainer) {
-                return priceContainer;
+            // Try to find the parent flex container
+            let insertTarget = priceEl.closest('.flex.flex-wrap');
+            if (insertTarget) {
+                console.log('Lunel Bundles: Inserting after price container');
+                return insertTarget;
             }
-            // Fallback: insert after the price element itself
-            return priceEl.parentElement;
-        }
-        
-        // Strategy 2: Insert after the fire icon section
-        const form = document.querySelector('#single-product-form, form.product-form');
-        if (form) {
-            const fireIcon = form.querySelector('.sicon-fire');
-            if (fireIcon) {
-                const row = fireIcon.closest('.my-6');
-                if (row) return row;
+            // If no flex container, insert after the price's parent
+            if (priceEl.parentElement) {
+                console.log('Lunel Bundles: Inserting after price parent');
+                return priceEl.parentElement;
             }
         }
         
-        // Strategy 3: Insert after the product title
-        const title = document.querySelector('.product-title');
-        if (title && title.parentElement) {
-            return title.parentElement;
+        // Strategy 2: Find the product title and insert after it
+        const titleEl = document.querySelector('.product-title');
+        if (titleEl && titleEl.parentElement) {
+            console.log('Lunel Bundles: Inserting after title');
+            return titleEl.parentElement;
         }
         
-        // Strategy 4: Insert before the form actions (buttons)
-        const addToCartBtn = document.querySelector('salla-add-product-button');
-        if (addToCartBtn && addToCartBtn.parentElement) {
-            return addToCartBtn.parentElement;
+        // Strategy 3: Find the form and insert after the first div inside it
+        const form = document.querySelector('#single-product-form');
+        if (form && form.firstChild) {
+            console.log('Lunel Bundles: Inserting at form start');
+            return form.firstChild;
         }
         
+        console.warn('Lunel Bundles: No insertion point found');
         return null;
     }
 
@@ -104,7 +106,6 @@
         `;
     }
 
-    // FIXED: Navigates to href when clicked
     function attachClickHandler() {
         const grid = document.querySelector(`#${LUNEL_BUNDLES_ROOT_ID} .lunel-bundles__grid`);
         if (!grid) return;
@@ -115,6 +116,7 @@
 
             const bundleId = card.dataset.bundleId;
             const href = card.getAttribute('href');
+            const currentUrl = window.location.href;
             
             // Update selection UI
             grid.querySelectorAll('.lunel-bundles__card').forEach((el) => {
@@ -128,28 +130,37 @@
                 detail: { bundleId: bundleId }
             }));
 
-            // Navigate to the link (if it's a valid URL and not "#")
-            if (href && href !== '#') {
+            // Navigate ONLY if href is different from current page
+            if (href && href !== '#' && href !== currentUrl) {
                 window.location.href = href;
             }
         });
     }
 
     function insertBundles(bundlesData) {
-        if (document.getElementById(LUNEL_BUNDLES_ROOT_ID)) return true;
+        if (document.getElementById(LUNEL_BUNDLES_ROOT_ID)) {
+            console.log('Lunel Bundles: Already inserted');
+            return true;
+        }
 
         const anchor = getInsertionPoint();
         if (!anchor) return false;
 
         anchor.insertAdjacentHTML('afterend', buildBundlesHTML(bundlesData));
         attachClickHandler();
+        console.log('Lunel Bundles: Successfully inserted bundles');
         return true;
     }
 
     // FAST INITIALIZATION
     const productId = getProductIdFromURL();
+    console.log('Lunel Bundles: Current product ID =', productId);
+    
     if (productId && BUNDLES_BY_PRODUCT_ID[productId]) {
+        console.log('Lunel Bundles: Product found in config');
         const bundlesData = normalizeBundleSelection(BUNDLES_BY_PRODUCT_ID[productId].bundles);
+        console.log('Lunel Bundles: Bundles data =', bundlesData);
+        
         if (bundlesData.length) {
             let attempts = 0;
             const maxAttempts = 20;
@@ -163,6 +174,10 @@
             }
             
             tryInsert();
+        } else {
+            console.log('Lunel Bundles: No bundles data for product');
         }
+    } else {
+        console.log('Lunel Bundles: Product', productId, 'NOT found in config. Available products:', Object.keys(BUNDLES_BY_PRODUCT_ID));
     }
 })();
