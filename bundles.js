@@ -27,17 +27,41 @@
     }
 
     function getInsertionPoint() {
-        const form = document.querySelector('#single-product-form, form.product-form');
-        if (!form) return null;
-
-        const fireIcon = form.querySelector('.sicon-fire');
-        if (fireIcon) {
-            const row = fireIcon.closest('.my-6');
-            if (row) return row;
-        }
-
+        // Strategy 1: Insert after the price element directly
         const priceEl = document.querySelector('.total-price-single');
-        return priceEl?.closest('.flex.flex-wrap') || null;
+        if (priceEl) {
+            // Get the container that holds the price and surrounding elements
+            const priceContainer = priceEl.closest('.flex.flex-wrap');
+            if (priceContainer) {
+                return priceContainer;
+            }
+            // Fallback: insert after the price element itself
+            return priceEl.parentElement;
+        }
+        
+        // Strategy 2: Insert after the fire icon section
+        const form = document.querySelector('#single-product-form, form.product-form');
+        if (form) {
+            const fireIcon = form.querySelector('.sicon-fire');
+            if (fireIcon) {
+                const row = fireIcon.closest('.my-6');
+                if (row) return row;
+            }
+        }
+        
+        // Strategy 3: Insert after the product title
+        const title = document.querySelector('.product-title');
+        if (title && title.parentElement) {
+            return title.parentElement;
+        }
+        
+        // Strategy 4: Insert before the form actions (buttons)
+        const addToCartBtn = document.querySelector('salla-add-product-button');
+        if (addToCartBtn && addToCartBtn.parentElement) {
+            return addToCartBtn.parentElement;
+        }
+        
+        return null;
     }
 
     function escapeHtml(str) {
