@@ -83,10 +83,32 @@
         });
     }
 
+    function getSallaStorePathPrefix() {
+        const host = window.location.hostname;
+        if (host !== 'salla.sa' && !host.endsWith('.salla.sa')) return '';
+        const parts = window.location.pathname.split('/').filter(Boolean);
+        if (parts.length > 0) return '/' + parts[0];
+        const fallback = window.LUNEL_BUNDLES_SALLA_STORE_SLUG;
+        if (typeof fallback === 'string' && fallback.trim()) {
+            return '/' + fallback.trim().replace(/^\/+|\/+$/g, '');
+        }
+        return '';
+    }
+
+    function resolveBundleHref(bundle) {
+        const path = (bundle.path || '').trim().replace(/^\/+/, '');
+        if (path) {
+            const prefix = getSallaStorePathPrefix();
+            return window.location.origin + prefix + '/' + path;
+        }
+        if (bundle.href) return bundle.href;
+        return '#';
+    }
+
     function buildBundlesHTML(bundlesData) {
         const cardsHTML = bundlesData.map((bundle) => `
             <a class="lunel-bundles__card${bundle.selected ? ' lunel-bundles__card--selected' : ''}"
-               href="${bundle.href || '#'}"
+               href="${escapeHtml(resolveBundleHref(bundle))}"
                role="button"
                aria-pressed="${bundle.selected}"
                data-bundle-id="${bundle.id}">
