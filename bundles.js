@@ -96,14 +96,14 @@
     }
 
     function resolveBundleHref(bundle) {
-        console.info(bundle);
-        const path = (bundle.path || '').trim().replace(/^\/+/, '');
+        const existing = bundle.href && String(bundle.href).trim();
+        if (existing && /^https?:\/\//i.test(existing)) return existing;
+        const path = String(bundle.path || '').trim().replace(/^\/+/, '');
         if (path) {
             const prefix = getSallaStorePathPrefix();
-            console.log(window.location.origin + prefix + '/' + path);
             return window.location.origin + prefix + '/' + path;
         }
-        if (bundle.href) return bundle.href;
+        if (existing) return existing;
         return '#';
     }
 
