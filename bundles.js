@@ -30,38 +30,45 @@
     }
 
     function getInsertionPoint() {
+        // Strategy 0: Dedicated container — insert inside
+        const saji = document.querySelector('.saji-custom-div');
+        if (saji) {
+            console.log('Lunel Bundles: Inserting inside .saji-custom-div');
+            return { element: saji, position: 'beforeend' };
+        }
+
         // Strategy 1: Find the price element and insert after its container
         const priceEl = document.querySelector('.total-price-single');
         console.log('Lunel Bundles: Price element found?', priceEl);
-        
+
         if (priceEl) {
             // Try to find the parent flex container
             let insertTarget = priceEl.closest('.flex.flex-wrap');
             if (insertTarget) {
                 console.log('Lunel Bundles: Inserting after price container');
-                return insertTarget;
+                return { element: insertTarget, position: 'afterend' };
             }
             // If no flex container, insert after the price's parent
             if (priceEl.parentElement) {
                 console.log('Lunel Bundles: Inserting after price parent');
-                return priceEl.parentElement;
+                return { element: priceEl.parentElement, position: 'afterend' };
             }
         }
-        
+
         // Strategy 2: Find the product title and insert after it
         const titleEl = document.querySelector('.product-title');
         if (titleEl && titleEl.parentElement) {
             console.log('Lunel Bundles: Inserting after title');
-            return titleEl.parentElement;
+            return { element: titleEl.parentElement, position: 'afterend' };
         }
-        
+
         // Strategy 3: Find the form and insert after the first div inside it
         const form = document.querySelector('#single-product-form');
         if (form && form.firstChild) {
             console.log('Lunel Bundles: Inserting at form start');
-            return form.firstChild;
+            return { element: form.firstChild, position: 'afterend' };
         }
-        
+
         console.warn('Lunel Bundles: No insertion point found');
         return null;
     }
@@ -143,10 +150,11 @@
             return true;
         }
 
-        const anchor = getInsertionPoint();
-        if (!anchor) return false;
+        const target = getInsertionPoint();
+        if (!target) return false;
 
-        anchor.insertAdjacentHTML('afterend', buildBundlesHTML(bundlesData));
+        const { element, position } = target;
+        element.insertAdjacentHTML(position, buildBundlesHTML(bundlesData));
         attachClickHandler();
         console.log('Lunel Bundles: Successfully inserted bundles');
         return true;
