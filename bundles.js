@@ -96,9 +96,11 @@
     }
 
     function resolveBundleHref(bundle) {
+        console.info(bundle);
         const path = (bundle.path || '').trim().replace(/^\/+/, '');
         if (path) {
             const prefix = getSallaStorePathPrefix();
+            console.log(window.location.origin + prefix + '/' + path);
             return window.location.origin + prefix + '/' + path;
         }
         if (bundle.href) return bundle.href;
