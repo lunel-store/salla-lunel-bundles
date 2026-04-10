@@ -107,28 +107,68 @@
         return '#';
     }
 
+    function buildRibbonSpan(ribbon) {
+        if (!ribbon || !String(ribbon.text || '').trim()) return '';
+        const tone = /^(orange|green|red)$/.test(ribbon.tone) ? ribbon.tone : 'green';
+        const seal = ribbon.seal === true;
+        const flame = ribbon.flame === true;
+        let html =
+            '<span class="lunel-bundles__ribbon lunel-bundles__ribbon--' +
+            tone +
+            '"><span class="lunel-bundles__ribbon-label">' +
+            escapeHtml(ribbon.text) +
+            '</span>';
+        if (seal) {
+            html +=
+                '<span class="lunel-bundles__ribbon-seal" aria-hidden="true"><span class="lunel-bundles__ribbon-seal-inner">#1</span></span>';
+        }
+        if (flame) {
+            html +=
+                '<span class="lunel-bundles__ribbon-flame" aria-hidden="true">\uD83D\uDD25</span>';
+        }
+        html += '</span>';
+        return html;
+    }
+
+    function buildRibbonsBlock(bundle) {
+        const parts = [];
+        const a = buildRibbonSpan(bundle.topRibbon);
+        const b = buildRibbonSpan(bundle.topRibbon2);
+        if (a) parts.push(a);
+        if (b) parts.push(b);
+        if (!parts.length) return '';
+        const multi = parts.length > 1 ? ' lunel-bundles__ribbons--multi' : '';
+        return '<div class="lunel-bundles__ribbons' + multi + '" aria-hidden="true">' + parts.join('') + '</div>';
+    }
+
     function buildBundlesHTML(bundlesData) {
-        const cardsHTML = bundlesData.map((bundle) => `
-            <a class="lunel-bundles__card${bundle.selected ? ' lunel-bundles__card--selected' : ''}"
+        const cardsHTML = bundlesData.map((bundle) => {
+            const ribbons = buildRibbonsBlock(bundle);
+            const hasRibbons = ribbons ? ' lunel-bundles__card--has-ribbons' : '';
+            return `
+            <a class="lunel-bundles__card${bundle.selected ? ' lunel-bundles__card--selected' : ''}${hasRibbons}"
                href="${escapeHtml(resolveBundleHref(bundle))}"
                role="button"
-               aria-pressed="${bundle.selected}"
+               aria-pressed="${String(!!bundle.selected)}"
                data-bundle-id="${bundle.id}">
-                <div class="lunel-bundles__badge">${escapeHtml(bundle.discountText)}</div>
-                <div class="lunel-bundles__media">
-                    <img class="lunel-bundles__img"
-                         src="${escapeHtml(bundle.imageUrl)}"
-                         alt="${escapeHtml(bundle.title)}"
-                         width="112"
-                         height="72"
-                         decoding="async"
-                         loading="eager"
-                         data-lunel-img-fb="${escapeHtml(bundle.imageFallbackUrl || '')}"
-                         data-lunel-img-fb-main="${escapeHtml(bundle.imageFallbackUrlMain || '')}">
+                ${ribbons}
+                <div class="lunel-bundles__body">
+                    <div class="lunel-bundles__media">
+                        <img class="lunel-bundles__img"
+                             src="${escapeHtml(bundle.imageUrl)}"
+                             alt="${escapeHtml(bundle.title)}"
+                             width="140"
+                             height="96"
+                             decoding="async"
+                             loading="eager"
+                             data-lunel-img-fb="${escapeHtml(bundle.imageFallbackUrl || '')}"
+                             data-lunel-img-fb-main="${escapeHtml(bundle.imageFallbackUrlMain || '')}">
+                    </div>
+                    <div class="lunel-bundles__label">${escapeHtml(bundle.title)}</div>
                 </div>
-                <div class="lunel-bundles__label">${escapeHtml(bundle.title)}</div>
-            </a>
-        `).join('');
+                <div class="lunel-bundles__discount">${escapeHtml(bundle.discountText)}</div>
+            </a>`;
+        }).join('');
 
         return `
             <section id="${LUNEL_BUNDLES_ROOT_ID}" class="lunel-bundles" dir="rtl">
@@ -185,7 +225,7 @@
             grid.querySelectorAll('.lunel-bundles__card').forEach((el) => {
                 const isSelected = el.dataset.bundleId === bundleId;
                 el.classList.toggle('lunel-bundles__card--selected', isSelected);
-                el.setAttribute('aria-pressed', isSelected);
+                el.setAttribute('aria-pressed', String(isSelected));
             });
 
             // Trigger custom event

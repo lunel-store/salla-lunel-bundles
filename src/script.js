@@ -4,7 +4,7 @@
    ============================================ */
 
 // Bump when you change config, bundles.js, or image assets (loader + fallbacks use v{VERSION} then main).
-var LUNEL_BUNDLES_CONFIG_VERSION = '6.1.3';
+var LUNEL_BUNDLES_CONFIG_VERSION = '6.1.5';
 
 // ============================================
 // PART 1: CONFIGURATION (Edit this for your products)
@@ -27,7 +27,8 @@ var LUNEL_BUNDLES_CONFIG_VERSION = '6.1.3';
             discountText: 'وفر %40',
             path: 'lunel-refund-return-guarantee-3x3/p1904366049',
             imageUrl: 'https://cdn.salla.sa/PdPWWG/45bac867-ef96-46ce-a384-6e756a30583c-1000x1000-rWPmls1QWgnfrr9ZiNJiAvpwrNIkkWEhXqEinVMc.png',
-            imageFallbackFile: 'p1904366049.webp'
+            imageFallbackFile: 'p1904366049.webp',
+            topRibbon: { text: 'لأفضل نتائج', tone: 'green', seal: true }
         },
         'bundle-2': {
             id: 'bundle-2',
@@ -35,7 +36,9 @@ var LUNEL_BUNDLES_CONFIG_VERSION = '6.1.3';
             discountText: 'وفر %30',
             path: 'lunel-refund-return-guarantee-3x3/p2094249977',
             imageUrl: 'https://cdn.salla.sa/PdPWWG/97a4430c-7c79-40b3-90d5-2ecd63944b86-1000x1000-aFE1QorPvoKTE4e2yKJkeU9k3E2pSP9t3hTAkDwO.png',
-            imageFallbackFile: 'p2094249977.webp'
+            imageFallbackFile: 'p2094249977.webp',
+            topRibbon: { text: 'الأكثر مبيعاً', tone: 'orange', seal: true },
+            topRibbon2: { text: 'ينفد خلال أيام', tone: 'red', flame: true }
         },
         'bundle-3': {
             id: 'bundle-3',
@@ -43,7 +46,8 @@ var LUNEL_BUNDLES_CONFIG_VERSION = '6.1.3';
             discountText: 'وفر %25',
             path: 'lunel-refund-return-guarantee-3x3/p1644875761',
             imageUrl: 'https://cdn.salla.sa/PdPWWG/81e639d9-6749-4ca6-bf8a-d9ab162c1e0c-1000x1000-CLxJzGdHfzX6jYJnUD35xxQuaKkY3Fj4l26pk5rz.png',
-            imageFallbackFile: 'p1644875761.webp'
+            imageFallbackFile: 'p1644875761.webp',
+            topRibbon: { text: 'لأفضل نتائج', tone: 'green', seal: true }
         }
     };
 
@@ -111,6 +115,8 @@ var LUNEL_BUNDLES_CONFIG_VERSION = '6.1.3';
                         imageUrl: base.imageUrl,
                         imageFallbackUrl: fbTag,
                         imageFallbackUrlMain: fbMain,
+                        topRibbon: base.topRibbon,
+                        topRibbon2: base.topRibbon2,
                         selected: bundleId === def.selected
                     };
                 })

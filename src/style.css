@@ -1,27 +1,28 @@
 /* Add custom CSS styles below */
 
-/*====== Lunel — product bundles Start =======================================
- * Lunel — product bundles (scoped under #lunel-bundles-root) product details page.
- */
+/*====== Lunel — product bundles (scoped #lunel-bundles-root) ================= */
 
- #lunel-bundles-root.lunel-bundles {
-    margin: 22px 0 16px;
+#lunel-bundles-root.lunel-bundles {
+    margin: 24px 0 20px;
     contain: layout style;
     isolation: isolate;
+    font-family: inherit;
 }
 
 #lunel-bundles-root .lunel-bundles__heading {
-    margin: 0 0 14px;
-    font-size: 24px;
+    margin: 0 0 18px;
+    font-size: clamp(1.35rem, 3.5vw, 1.6rem);
     font-weight: 800;
     color: #111;
     text-align: start;
+    letter-spacing: -0.02em;
 }
 
 #lunel-bundles-root .lunel-bundles__grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px;
+    gap: 16px;
+    align-items: stretch;
 }
 
 #lunel-bundles-root .lunel-bundles__grid:has(> *:nth-child(3n):last-child) {
@@ -32,82 +33,232 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 18px 14px 16px;
-    border-radius: 14px;
-    background: #f9f9f9;
-    border: 2px solid #e5e7eb;
+    align-items: stretch;
+    min-height: 0;
+    padding: 20px 14px 26px;
+    border-radius: 22px;
+    background: #f8f8f8;
+    border: 1px solid #e8e8e8;
     text-decoration: none;
     color: inherit;
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
     -webkit-tap-highlight-color: transparent;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease,
+        transform 0.15s ease;
+}
+
+#lunel-bundles-root .lunel-bundles__card--has-ribbons {
+    padding-top: 28px;
+}
+
+#lunel-bundles-root .lunel-bundles__card:hover {
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.07);
+}
+
+#lunel-bundles-root .lunel-bundles__card:focus-visible {
+    outline: 3px solid #111;
+    outline-offset: 2px;
 }
 
 #lunel-bundles-root .lunel-bundles__card--selected {
+    background: #fff;
+    border-width: 2px;
     border-color: #111;
-    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
-#lunel-bundles-root .lunel-bundles__badge {
+/* Top marketing ribbons */
+#lunel-bundles-root .lunel-bundles__ribbons {
     position: absolute;
-    top: -12px;
+    top: 0;
     inset-inline-start: 50%;
-    transform: translateX(50%);
-    padding: 6px 14px;
-    border-radius: 2px;
-    background: #ffeb3b;
-    color: #111;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    max-width: calc(100% - 16px);
+    z-index: 2;
+    pointer-events: none;
+}
+
+#lunel-bundles-root .lunel-bundles__ribbons--multi {
+    gap: 5px;
+}
+
+#lunel-bundles-root .lunel-bundles__ribbon {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 10px 5px 8px;
+    border-radius: 6px;
+    font-size: 11px;
     font-weight: 800;
-    font-size: 14px;
-    line-height: 1.1;
+    line-height: 1.2;
+    color: #fff;
     white-space: nowrap;
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+#lunel-bundles-root .lunel-bundles__ribbon-label {
+    max-width: 140px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#lunel-bundles-root .lunel-bundles__ribbon--orange {
+    background: linear-gradient(180deg, #ff8a3d 0%, #ea580c 100%);
+}
+
+#lunel-bundles-root .lunel-bundles__ribbon--green {
+    background: linear-gradient(180deg, #34d399 0%, #16a34a 100%);
+}
+
+#lunel-bundles-root .lunel-bundles__ribbon--red {
+    background: linear-gradient(180deg, #f87171 0%, #dc2626 100%);
+}
+
+#lunel-bundles-root .lunel-bundles__ribbon-seal {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+}
+
+#lunel-bundles-root .lunel-bundles__ribbon-seal-inner {
+    font-size: 9px;
+    font-weight: 900;
+    line-height: 1;
+}
+
+#lunel-bundles-root .lunel-bundles__ribbon--orange .lunel-bundles__ribbon-seal-inner {
+    color: #c2410c;
+}
+
+#lunel-bundles-root .lunel-bundles__ribbon--green .lunel-bundles__ribbon-seal-inner {
+    color: #15803d;
+}
+
+#lunel-bundles-root .lunel-bundles__ribbon--red .lunel-bundles__ribbon-seal-inner {
+    color: #b91c1c;
+}
+
+#lunel-bundles-root .lunel-bundles__ribbon-flame {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #fff;
+    display: grid;
+    place-items: center;
+    font-size: 12px;
+    line-height: 1;
+}
+
+/* Card body: image + title */
+#lunel-bundles-root .lunel-bundles__body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-height: 0;
 }
 
 #lunel-bundles-root .lunel-bundles__media {
-    width: 112px;
-    height: 72px;
-    background: transparent;
-    overflow: visible;
+    width: 100%;
+    max-width: 148px;
+    min-height: 88px;
     display: grid;
     place-items: center;
+    overflow: visible;
 }
 
 #lunel-bundles-root .lunel-bundles__img {
-    max-width: 112px;
-    max-height: 72px;
+    max-width: 140px;
+    max-height: 96px;
     width: auto;
     height: auto;
     object-fit: contain;
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.08));
 }
 
 #lunel-bundles-root .lunel-bundles__label {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 800;
-    color: #111;
-    line-height: 1.25;
+    color: #1a1a1a;
+    line-height: 1.35;
     text-align: center;
-    padding: 0 6px;
+    padding: 0 4px;
+}
+
+/* Bottom discount (yellow bar) */
+#lunel-bundles-root .lunel-bundles__discount {
+    position: absolute;
+    bottom: 0;
+    inset-inline-start: 50%;
+    transform: translate(-50%, 50%);
+    z-index: 2;
+    padding: 7px 18px;
+    border-radius: 4px;
+    background: #ffeb3b;
+    color: #c62828;
+    font-weight: 900;
+    font-size: 14px;
+    line-height: 1.15;
+    white-space: nowrap;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 640px) {
     #lunel-bundles-root .lunel-bundles__grid {
-        gap: 10px;
+        gap: 12px;
     }
 
     #lunel-bundles-root .lunel-bundles__card {
-        padding: 16px 12px 14px;
+        padding: 18px 10px 24px;
+        border-radius: 18px;
     }
 
-    #lunel-bundles-root .lunel-bundles__media {
-        width: 104px;
-        height: 66px;
+    #lunel-bundles-root .lunel-bundles__card--has-ribbons {
+        padding-top: 26px;
+    }
+
+    #lunel-bundles-root .lunel-bundles__ribbon {
+        font-size: 10px;
+        padding: 4px 8px;
+    }
+
+    #lunel-bundles-root .lunel-bundles__ribbon-label {
+        max-width: 100px;
+    }
+
+    #lunel-bundles-root .lunel-bundles__discount {
+        font-size: 12px;
+        padding: 6px 14px;
     }
 
     #lunel-bundles-root .lunel-bundles__label {
-        font-size: 16px;
+        font-size: 15px;
+    }
+
+    #lunel-bundles-root .lunel-bundles__media {
+        min-height: 76px;
+    }
+
+    #lunel-bundles-root .lunel-bundles__img {
+        max-width: 120px;
+        max-height: 84px;
     }
 }
+
 /*=========== Lunel — product bundles End ======================================= */
