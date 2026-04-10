@@ -123,7 +123,8 @@
                          height="72"
                          decoding="async"
                          loading="eager"
-                         onerror="this.src='https://placehold.co/112x72?text=No+Image'">
+                         data-lunel-img-fb="${escapeHtml(bundle.imageFallbackUrl || '')}"
+                         onerror="if(this.dataset.lunelImgFb&&!this.dataset.lunelImgFbTried){this.dataset.lunelImgFbTried='1';this.src=this.dataset.lunelImgFb;return;}this.onerror=null;this.src='https://placehold.co/112x72?text=No+Image'">
                 </div>
                 <div class="lunel-bundles__label">${escapeHtml(bundle.title)}</div>
             </a>
