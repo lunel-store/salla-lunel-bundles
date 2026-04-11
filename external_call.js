@@ -3,7 +3,8 @@
 
   var LUNEL_BUNDLES_CONFIG_VERSION = '7.0.2';
   var LUNEL_GITHUB_REPO = 'lunel-store/salla-lunel-bundles';
-  var JSDELIVR_PREFIX = 'https://cdn.jsdelivr.net/gh/' + LUNEL_GITHUB_REPO + '@';
+  var JSDELIVR_PREFIX =
+    'https://cdn.jsdelivr.net/gh/' + LUNEL_GITHUB_REPO + '@';
 
   // Only this bootstrap; must NOT set __lunelBundlesJsLoaderExecuted (config.js Part 2 owns that and loads bundles.js).
   if (window.__lunelConfigBootstrapExecuted) return;
@@ -48,5 +49,14 @@
     document.head.appendChild(script);
   }
 
+  function loadStyle() {
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href =
+      JSDELIVR_PREFIX + 'v' + LUNEL_BUNDLES_CONFIG_VERSION + '/style.css';
+    document.head.appendChild(link);
+  }
+
   loadLunelConfig('v' + LUNEL_BUNDLES_CONFIG_VERSION, true);
+  loadStyle();
 })();
