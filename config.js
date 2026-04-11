@@ -12,6 +12,8 @@ var JSDELIVR_PREFIX = 'https://cdn.jsdelivr.net/gh/' + LUNEL_GITHUB_REPO + '@';
 var JSDELIVR_TAG_PREFIX = JSDELIVR_PREFIX + 'v' + LUNEL_BUNDLES_CONFIG_VERSION;
 var JSDELIVR_MAIN_PREFIX = JSDELIVR_PREFIX + 'main';
 
+var LUNEL_LOCAL_ENV = false;
+
 // ============================================
 // PART 1: CONFIGURATION (Edit this for your products)
 // ============================================
@@ -207,7 +209,8 @@ var JSDELIVR_MAIN_PREFIX = JSDELIVR_PREFIX + 'main';
   }
 
   function bundlesJsUrl(ref) {
-    return '../../../bundles.js';
+    if (LUNEL_LOCAL_ENV) return '../../../bundles.js';
+
     return (
       JSDELIVR_PREFIX +
       ref +
