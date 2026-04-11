@@ -3,32 +3,32 @@
    Lunel Bundles - Configuration & Loader
    ============================================ */
 
-// Bump when you change config, bundles.js, or image assets (loader + fallbacks use v{VERSION} then main).
-var LUNEL_BUNDLES_CONFIG_VERSION = '7.0.2';
-var LUNEL_GITHUB_REPO = 'lunel-store/salla-lunel-bundles';
-
-//
-var JSDELIVR_PREFIX = 'https://cdn.jsdelivr.net/gh/' + LUNEL_GITHUB_REPO + '@';
-var JSDELIVR_TAG_PREFIX = JSDELIVR_PREFIX + 'v' + LUNEL_BUNDLES_CONFIG_VERSION;
-var JSDELIVR_MAIN_PREFIX = JSDELIVR_PREFIX + 'main';
-
-var LUNEL_LOCAL_ENV = false;
-
-// ============================================
-// PART 1: CONFIGURATION (Edit this for your products)
-// ============================================
 (function () {
   'use strict';
 
-  function lunelJsdelivrImage(fileName, isMain = false) {
-    var f = String(fileName || '').replace(/^\/+/, '');
-    if (!f) return '';
-    return (
-      (isMain ? JSDELIVR_MAIN_PREFIX : JSDELIVR_TAG_PREFIX) + '/images/' + f
-    );
-  }
+  // Bump when you change config, bundles.js, or image assets (loader + fallbacks use v{VERSION} then main).
+  var LUNEL_BUNDLES_CONFIG_VERSION = '7.0.2';
+  var LUNEL_GITHUB_REPO = 'lunel-store/salla-lunel-bundles';
+  var JSDELIVR_PREFIX = 'https://cdn.jsdelivr.net/gh/' + LUNEL_GITHUB_REPO + '@';
+  var JSDELIVR_TAG_PREFIX = JSDELIVR_PREFIX + 'v' + LUNEL_BUNDLES_CONFIG_VERSION;
+  var JSDELIVR_MAIN_PREFIX = JSDELIVR_PREFIX + 'main';
+  var LUNEL_LOCAL_ENV = false;
 
-  var CATALOG = {
+  // ============================================
+  // PART 1: CONFIGURATION (Edit this for your products)
+  // ============================================
+  (function () {
+    'use strict';
+
+    function lunelJsdelivrImage(fileName, isMain = false) {
+      var f = String(fileName || '').replace(/^\/+/, '');
+      if (!f) return '';
+      return (
+        (isMain ? JSDELIVR_MAIN_PREFIX : JSDELIVR_TAG_PREFIX) + '/images/' + f
+      );
+    }
+
+    var CATALOG = {
     'bundle-1': {
       id: 'bundle-1',
       title: 'مجموعة التفتيح والنضارة',
@@ -249,4 +249,5 @@ var LUNEL_LOCAL_ENV = false;
   } else {
     loadBundlesJs('v' + LUNEL_BUNDLES_CONFIG_VERSION, true);
   }
+  })();
 })();

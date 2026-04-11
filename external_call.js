@@ -1,9 +1,9 @@
-var LUNEL_BUNDLES_CONFIG_VERSION = '7.0.2';
-var LUNEL_GITHUB_REPO = 'lunel-store/salla-lunel-bundles';
-var JSDELIVR_PREFIX = 'https://cdn.jsdelivr.net/gh/' + LUNEL_GITHUB_REPO + '@';
-
 (function () {
   'use strict';
+
+  var LUNEL_BUNDLES_CONFIG_VERSION = '7.0.2';
+  var LUNEL_GITHUB_REPO = 'lunel-store/salla-lunel-bundles';
+  var JSDELIVR_PREFIX = 'https://cdn.jsdelivr.net/gh/' + LUNEL_GITHUB_REPO + '@';
 
   // Only this bootstrap; must NOT set __lunelBundlesJsLoaderExecuted (config.js Part 2 owns that and loads bundles.js).
   if (window.__lunelConfigBootstrapExecuted) return;
