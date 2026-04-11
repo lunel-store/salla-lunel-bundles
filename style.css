@@ -1,0 +1,297 @@
+/* Add custom CSS styles below */
+
+/*====== Lunel — product bundles (scoped #lunel-bundles-root, prefix .lunel-bundles__) ====== */
+
+#lunel-bundles-root.lunel-bundles,
+#lunel-bundles-root.lunel-bundles *,
+#lunel-bundles-root.lunel-bundles *::before,
+#lunel-bundles-root.lunel-bundles *::after {
+    box-sizing: border-box;
+}
+
+#lunel-bundles-root.lunel-bundles {
+    width: 100%;
+    max-width: 100%;
+    margin: 16px 0;
+    padding: 0;
+    contain: layout style;
+    font-family: inherit;
+    overflow: hidden;
+}
+
+#lunel-bundles-root.lunel-bundles .lunel-bundles__wrap {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#lunel-bundles-root.lunel-bundles .lunel-bundles__heading {
+    margin: 0 0 16px;
+    padding: 0;
+    font-size: clamp(1.25rem, 4vw, 1.65rem);
+    font-weight: 800;
+    color: #212529;
+    text-align: right;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+}
+
+#lunel-bundles-root.lunel-bundles .lunel-bundles__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(12px, 3vw, 20px);
+    align-items: stretch;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#lunel-bundles-root.lunel-bundles .lunel-bundles__grid:has(> *:nth-child(3n):last-child) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 540px) {
+    #lunel-bundles-root.lunel-bundles .lunel-bundles__grid,
+    #lunel-bundles-root.lunel-bundles .lunel-bundles__grid:has(> *:nth-child(3n):last-child) {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+#lunel-bundles-root.lunel-bundles .lunel-bundles__card {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 12px 12px 14px;
+    border-radius: 20px;
+    background: #f8f9fa;
+    border: 3px solid #dee2e6;
+    text-decoration: none;
+    color: inherit;
+    overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+    transition:
+        border-color 0.2s ease,
+        background-color 0.2s ease,
+        box-shadow 0.2s ease;
+    direction: rtl;
+    unicode-bidi: isolate;
+}
+
+#lunel-bundles-root.lunel-bundles .lunel-bundles__card:hover {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+#lunel-bundles-root.lunel-bundles .lunel-bundles__card:focus-visible {
+    outline: 3px solid #212529;
+    outline-offset: 2px;
+}
+
+#lunel-bundles-root.lunel-bundles .lunel-bundles__card--selected {
+    background: #ffffff;
+    border-color: #212529;
+    box-shadow: none;
+}
+
+#lunel-bundles-root.lunel-bundles .lunel-bundles__card--selected:hover {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Badge row: inside card; RTL row → first badge end (right), second start (left) with space-between */
+#lunel-bundles-root.lunel-bundles .lunel-bundles__ribbons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    max-width: 100%;
+    flex-shrink: 0;
+    margin: 0 0 12px;
+    padding: 0;
+    min-width: 0;
+    pointer-events: none;
+}
+
+#lunel-bundles-root.lunel-bundles .lunel-bundles__ribbons--multi {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+#lunel-bundles-root.lunel-bundles .lunel-bundles__ribbon {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px 6px 8px;
+    border-radius: 2px;
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 1.25;
+    color: #fff;
+    white-space: normal;
+    max-width: 100%;
+    min-width: 0;
+    direction: ltr;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+#lunel-bundles-root.lunel-bundles .lunel-bundles__ribbon-label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    direction: rtl;
+    text-align: right;
+    max-width: min(160px, 100%);
+}
+
+#lunel-bundles-root.lunel-bundles .lunel-bundles__ribbon--green {
+    background: #28a745;
+}
+
+#lunel-bundles-root.lunel-bundles .lunel-bundles__ribbon--orange {
+    background: #ff4d24;
+}
+
+#lunel-bundles-root.lunel-bundles .lunel-bundles__ribbon--red {
+    background: #ff4d24;
+}
+
+#lunel-bundles-root.lunel-bundles .lunel-bundles__ribbon-seal {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #fff;
+}
+
+#lunel-bundles-root.lunel-bundles .lunel-bundles__ribbon-seal-inner {
+    font-size: 9px;
+    font-weight: 900;
+    line-height: 1;
+}
+
+#lunel-bundles-root.lunel-bundles .lunel-bundles__ribbon--green .lunel-bundles__ribbon-seal-inner {
+    color: #28a745;
+}
+
+#lunel-bundles-root.lunel-bundles .lunel-bundles__ribbon--orange .lunel-bundles__ribbon-seal-inner,
+#lunel-bundles-root.lunel-bundles .lunel-bundles__ribbon--red .lunel-bundles__ribbon-seal-inner {
+    color: #ff4d24;
+}
+
+#lunel-bundles-root.lunel-bundles .lunel-bundles__ribbon-flame {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #fff;
+    display: grid;
+    place-items: center;
+    font-size: 12px;
+    line-height: 1;
+}
+
+#lunel-bundles-root.lunel-bundles .lunel-bundles__body {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    min-width: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+}
+
+#lunel-bundles-root.lunel-bundles .lunel-bundles__media {
+    width: 100%;
+    max-width: min(100%, 168px);
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 10px 12px;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+    min-width: 0;
+}
+
+#lunel-bundles-root.lunel-bundles .lunel-bundles__img {
+    display: block;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    max-height: clamp(3.5rem, 22vw, 6rem);
+    object-fit: contain;
+}
+
+#lunel-bundles-root.lunel-bundles .lunel-bundles__label {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0 2px;
+    font-size: clamp(14px, 3.8vw, 16px);
+    font-weight: 800;
+    color: #212529;
+    line-height: 1.4;
+    text-align: right;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+#lunel-bundles-root.lunel-bundles .lunel-bundles__discount-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    flex-shrink: 0;
+    margin-top: auto;
+    padding-top: 12px;
+    min-width: 0;
+}
+
+#lunel-bundles-root.lunel-bundles .lunel-bundles__discount {
+    display: block;
+    max-width: 100%;
+    margin: 0;
+    padding: 8px 16px;
+    background: #ffff00;
+    color: #dc3545;
+    font-weight: 800;
+    font-size: clamp(13px, 3.5vw, 15px);
+    line-height: 1.25;
+    white-space: normal;
+    overflow-wrap: break-word;
+    text-align: center;
+    border-radius: 0;
+}
+
+@media (max-width: 360px) {
+    #lunel-bundles-root.lunel-bundles .lunel-bundles__grid {
+        gap: 10px;
+    }
+
+    #lunel-bundles-root.lunel-bundles .lunel-bundles__card {
+        padding: 10px 10px 12px;
+        border-radius: 16px;
+    }
+}
+
+/*=========== Lunel — product bundles End ======================================= */

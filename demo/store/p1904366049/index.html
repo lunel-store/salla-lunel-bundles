@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Demo — p1904366049</title>
-    <link rel="stylesheet" href="../../../src/style.css" />
+    <link rel="stylesheet" href="../../../style.css" />
     <style>
         body {
             margin: 0;
@@ -55,7 +55,10 @@
         </div>
         <form id="single-product-form"><div></div></form>
     </div>
+    <script>
+        window.LUNEL_BUNDLES_SCRIPT_BASE = new URL('../../../js/', window.location.href).href;
+        window.LUNEL_BUNDLES_RUNTIME_FROM_SCRIPT_BASE = true;
+    </script>
     <script src="../../../config.js"></script>
-    <script src="../../../bundles.js"></script>
 </body>
 </html>
