@@ -1,184 +1,249 @@
-/* Add custom Js styles below */ 
+/* Add custom Js styles below */
 /* ============================================
    Lunel Bundles - Configuration & Loader
    ============================================ */
 
 // Bump when you change config, bundles.js, or image assets (loader + fallbacks use v{VERSION} then main).
 var LUNEL_BUNDLES_CONFIG_VERSION = '6.2.1';
+var LUNEL_GITHUB_REPO = 'lunel-store/salla-lunel-bundles';
+
+//
+var JSDELIVR_PREFIX = 'https://cdn.jsdelivr.net/gh/' + LUNEL_GITHUB_REPO + '@';
+var JSDELIVR_TAG_PREFIX = JSDELIVR_PREFIX + 'v' + LUNEL_BUNDLES_CONFIG_VERSION;
+var JSDELIVR_MAIN_PREFIX = JSDELIVR_PREFIX + 'main';
 
 // ============================================
 // PART 1: CONFIGURATION (Edit this for your products)
 // ============================================
 (function () {
-    'use strict';
+  'use strict';
 
-    var GITHUB_REPO = 'lunel-store/salla-lunel-bundles';
-    var JSDELIVR_PREFIX = 'https://cdn.jsdelivr.net/gh/' + GITHUB_REPO + '@' + 'v' + LUNEL_BUNDLES_CONFIG_VERSION;
+  function lunelJsdelivrImage(fileName, isMain = false) {
+    var f = String(fileName || '').replace(/^\/+/, '');
+    if (!f) return '';
+    return (
+      (isMain ? JSDELIVR_MAIN_PREFIX : JSDELIVR_TAG_PREFIX) + '/images/' + f
+    );
+  }
 
-    function lunelJsdelivrImage(gitRef, fileName) {
-        var f = String(fileName || '').replace(/^\/+/, '');
-        if (!f) return '';
-        return JSDELIVR_PREFIX + '/images/' + f;
-    }
+  var CATALOG = {
+    'bundle-1': {
+      id: 'bundle-1',
+      title: 'مجموعة التفتيح والنضارة',
+      path: 'lunel-refund-return-guarantee-3x3/p1904366049',
+      imageUrl: lunelJsdelivrImage('p1904366049.webp'),
+      fallbackImageUrl: lunelJsdelivrImage('p1904366049.webp', true),
+    },
+    'bundle-2': {
+      id: 'bundle-2',
+      title: 'مجموعة الترطيب والعناية بالعين',
+      path: 'lunel-refund-return-guarantee-3x3/p1644875761',
+      imageUrl: lunelJsdelivrImage('p1644875761.webp'),
+      fallbackImageUrl: lunelJsdelivrImage('p1644875761.webp', true),
+    },
+    'bundle-3': {
+      id: 'bundle-3',
+      title: 'مجموعة لونيل المتكاملة',
+      path: 'lunel-refund-return-guarantee-3x3/p2094249977',
+      imageUrl: lunelJsdelivrImage('p2094249977.webp'),
+      fallbackImageUrl: lunelJsdelivrImage('p2094249977.webp', true),
+    },
+  };
 
-    var CATALOG = {
-        'bundle-1': {
-            id: 'bundle-1',
-            title: 'مجموعة التفتيح والنضارة',
-            discountText: 'وفر %40',
-            path: 'lunel-refund-return-guarantee-3x3/p1904366049',
-            imageUrl: 'https://cdn.salla.sa/PdPWWG/45bac867-ef96-46ce-a384-6e756a30583c-1000x1000-rWPmls1QWgnfrr9ZiNJiAvpwrNIkkWEhXqEinVMc.png',
-            imageFallbackFile: 'p1904366049.webp',
-            topRibbon: { text: 'لأفضل نتائج', tone: 'green', seal: true }
-        },
-        'bundle-2': {
-            id: 'bundle-2',
-            title: 'مجموعة لونيل المتكاملة',
+  var BY_PRODUCT = {
+    1904366049: {
+      name: CATALOG['bundle-1'].title,
+      selected: 'bundle-1',
+      bundles: [
+        {
+          id: 'bundle-1',
+          metadata: {
             discountText: 'وفر %30',
-            path: 'lunel-refund-return-guarantee-3x3/p2094249977',
-            imageUrl: 'https://cdn.salla.sa/PdPWWG/97a4430c-7c79-40b3-90d5-2ecd63944b86-1000x1000-aFE1QorPvoKTE4e2yKJkeU9k3E2pSP9t3hTAkDwO.png',
-            imageFallbackFile: 'p2094249977.webp',
-            topRibbon: { text: 'الأكثر مبيعاً', tone: 'orange', seal: true },
-            topRibbon2: { text: 'ينفد خلال أيام', tone: 'red', flame: true }
+          },
         },
-        'bundle-3': {
-            id: 'bundle-3',
-            title: 'مجموعة الترطيب والعناية بالعين',
-            discountText: 'وفر %25',
-            path: 'lunel-refund-return-guarantee-3x3/p1644875761',
-            imageUrl: 'https://cdn.salla.sa/PdPWWG/81e639d9-6749-4ca6-bf8a-d9ab162c1e0c-1000x1000-CLxJzGdHfzX6jYJnUD35xxQuaKkY3Fj4l26pk5rz.png',
-            imageFallbackFile: 'p1644875761.webp',
-            topRibbon: { text: 'لأفضل نتائج', tone: 'green', seal: true }
-        }
-    };
+        {
+          id: 'bundle-3',
+          metadata: {
+            discountText: 'وفر %50',
+            topRibbon: { text: 'الأكثر مبيعاً', tone: 'green', type: 'seal' },
+            topRibbon2: {
+              text: 'ينفد خلال أيام',
+              tone: 'orange',
+              type: 'flame',
+            },
+          },
+        },
+      ],
+    },
+    1644875761: {
+      name: CATALOG['bundle-2'].title,
+      selected: 'bundle-2',
+      bundles: [
+        {
+          id: 'bundle-2',
+          metadata: {
+            discountText: 'وفر %30',
+            topRibbon: { text: 'لأفضل نتائج', tone: 'green', type: 'seal' },
+          },
+        },
+        {
+          id: 'bundle-3',
+          metadata: {
+            discountText: 'وفر %50',
+            topRibbon: { text: 'الأكثر مبيعاً', tone: 'orange', type: 'flame' },
+          },
+        },
+      ],
+    },
+    2094249977: {
+      name: CATALOG['bundle-3'].title,
+      selected: 'bundle-3',
+      bundles: [
+        {
+          id: 'bundle-3',
+          metadata: {
+            discountText: 'وفر %50',
+            topRibbon: { text: 'الأكثر مبيعاً', tone: 'orange', type: 'flame' },
+          },
+        },
+        {
+          id: 'bundle-1',
+          metadata: {
+            discountText: 'وفر %30',
+            topRibbon: { text: 'لأفضل نتائج', tone: 'green', type: 'seal' },
+          },
+        },
+        {
+          id: 'bundle-2',
+          metadata: {
+            discountText: 'وفر %30',
+            topRibbon: { text: 'لأفضل نتائج', tone: 'green', type: 'seal' },
+          },
+        },
+      ],
+    },
+  };
 
-    function productHrefFromPath(path) {
-        var p = String(path || '')
-            .trim()
-            .replace(/^\/+/, '');
-        if (!p) return '#';
-        var host = window.location.hostname;
-        var prefix = '';
-        if (host === 'salla.sa' || host.slice(-9) === '.salla.sa') {
-            var parts = window.location.pathname.split('/').filter(Boolean);
-            if (parts.length > 0) prefix = '/' + parts[0];
-            else {
-                var fb = window.LUNEL_BUNDLES_SALLA_STORE_SLUG;
-                if (typeof fb === 'string' && fb.trim()) {
-                    prefix = '/' + fb.trim().replace(/^\/+|\/+$/g, '');
-                }
-            }
+  function productHrefFromPath(path) {
+    var p = String(path || '')
+      .trim()
+      .replace(/^\/+/, '');
+    if (!p) return '#';
+    var host = window.location.hostname;
+    var prefix = '';
+    if (host === 'salla.sa' || host.slice(-9) === '.salla.sa') {
+      var parts = window.location.pathname.split('/').filter(Boolean);
+      if (parts.length > 0) prefix = '/' + parts[0];
+      else {
+        var fb = window.LUNEL_BUNDLES_SALLA_STORE_SLUG;
+        if (typeof fb === 'string' && fb.trim()) {
+          prefix = '/' + fb.trim().replace(/^\/+|\/+$/g, '');
         }
-        return window.location.origin + prefix + '/' + p;
+      }
+    }
+    return window.location.origin + prefix + '/' + p;
+  }
+
+  function buldProductConfig(productId) {
+    var product = BY_PRODUCT[productId];
+
+    if (!product) {
+      console.warn('Lunel Bundles: No config for product ID', productId);
+      return null;
     }
 
-    var BY_PRODUCT = {
-        1904366049: {
-            name: 'مجموعة التفتيح والنضارة',
-            bundles: ['bundle-1', 'bundle-2'],
-            selected: 'bundle-1'
-        },
-        2094249977: {
-            name: 'مجموعة لونيل المتكاملة',
-            bundles: ['bundle-2', 'bundle-3', 'bundle-1'],
-            selected: 'bundle-2'
-        },
-        1644875761: {
-            name: 'مجموعة الترطيب والعناية بالعين',
-            bundles: ['bundle-3', 'bundle-2'],
-            selected: 'bundle-3'
-        }
-    };
+    return {
+      name: product.name,
+      bundles: product.bundles
+        .map(function (bundle) {
+          var base = CATALOG[bundle.id];
+          if (!base) {
+            console.warn('Lunel Bundles: missing catalog entry for', bundle.id);
+            return null;
+          }
 
-    var out = {};
-    for (var productId in BY_PRODUCT) {
-        if (!Object.prototype.hasOwnProperty.call(BY_PRODUCT, productId)) continue;
-        var def = BY_PRODUCT[productId];
-        out[productId] = {
-            name: def.name,
-            bundles: def.bundles
-                .map(function (bundleId) {
-                    var base = CATALOG[bundleId];
-                    if (!base) {
-                        console.warn('Lunel Bundles: missing catalog entry for', bundleId);
-                        return null;
-                    }
-                    var tagRef = 'v' + LUNEL_BUNDLES_CONFIG_VERSION;
-                    var file = base.imageFallbackFile;
-                    var fbTag = file ? lunelJsdelivrImage(tagRef, file) : '';
-                    return {
-                        id: base.id,
-                        title: base.title,
-                        discountText: base.discountText,
-                        path: base.path,
-                        href: productHrefFromPath(base.path),
-                        imageUrl: base.imageUrl,
-                        imageFallbackUrl: fbTag,
-                        imageFallbackUrlMain: fbMain,
-                        topRibbon: base.topRibbon,
-                        topRibbon2: base.topRibbon2,
-                        selected: bundleId === def.selected
-                    };
-                })
-                .filter(Boolean)
-        };
-    }
-    window.LUNEL_BUNDLES_CONFIG = out;
+          return {
+            id: base.id,
+            title: base.title,
+            path: base.path,
+            href: productHrefFromPath(base.path),
+            imageUrl: base.imageUrl,
+            fallbackImageUrl: base.fallbackImageUrl,
+            discountText: bundle.metadata.discountText,
+            topRibbon: bundle.metadata.topRibbon,
+            topRibbon2: bundle.metadata.topRibbon2,
+            selected: bundle.id === product.selected,
+          };
+        })
+        .filter(Boolean),
+    };
+  }
+
+  var out = {};
+  for (var productId in BY_PRODUCT) {
+    if (!Object.prototype.hasOwnProperty.call(BY_PRODUCT, productId)) continue;
+    var productConfig = buldProductConfig(productId);
+    if (productConfig) out[productId] = productConfig;
+  }
+
+  window.LUNEL_BUNDLES_CONFIG = out;
 })();
 
 // ============================================
 // PART 2: CACHE-BUSTING LOADER
 // ============================================
-(function() {
-    'use strict';
-    
-    // Prevent loading twice
-    if (window.__lunelLoaderExecuted) return;
-    window.__lunelLoaderExecuted = true;
-    
-    const CONFIG_VERSION = LUNEL_BUNDLES_CONFIG_VERSION;
-    const GITHUB_REPO = 'lunel-store/salla-lunel-bundles';
+(function () {
+  'use strict';
 
-    function sanitizeGitRef(ref) {
-        return String(ref || '')
-            .trim()
-            .replace(/^@+/, '')
-            .replace(/[^a-zA-Z0-9._/-]/g, '');
-    }
+  // Prevent loading twice
+  if (window.__lunelLoaderExecuted) return;
+  window.__lunelLoaderExecuted = true;
 
-    function bundlesJsUrl(ref) {
-        return (
-            'https://cdn.jsdelivr.net/gh/' +
-            GITHUB_REPO +
-            '@' +
-            ref +
-            '/bundles.js?v=' +
-            encodeURIComponent(CONFIG_VERSION)
-        );
-    }
+  function sanitizeGitRef(ref) {
+    return String(ref || '')
+      .trim()
+      .replace(/^@+/, '')
+      .replace(/[^a-zA-Z0-9._/-]/g, '');
+  }
 
-    function loadBundlesJs(ref, allowMainFallback) {
-        const script = document.createElement('script');
-        script.src = bundlesJsUrl(ref);
-        script.defer = true;
-        script.onload = function () {
-            console.log('✅ Lunel Bundles: Loaded successfully (v' + CONFIG_VERSION + ', ref ' + ref + ')');
-        };
-        script.onerror = function () {
-            if (allowMainFallback && ref !== 'main') {
-                console.warn('Lunel Bundles: ref "' + ref + '" failed, retrying @main');
-                loadBundlesJs('main', false);
-                return;
-            }
-            console.error('❌ Lunel Bundles: Failed to load. Check GitHub file URL.');
-        };
-        document.head.appendChild(script);
-    }
+  function bundlesJsUrl(ref) {
+    return '../../../bundles.js';
+    return (
+      JSDELIVR_PREFIX +
+      ref +
+      '/bundles.js?v=' +
+      encodeURIComponent(LUNEL_BUNDLES_CONFIG_VERSION)
+    );
+  }
 
-    const explicit = sanitizeGitRef(window.LUNEL_BUNDLES_JS_REF);
-    if (explicit) {
-        loadBundlesJs(explicit, false);
-    } else {
-        loadBundlesJs('v' + CONFIG_VERSION, true);
-    }
+  function loadBundlesJs(ref, allowMainFallback) {
+    const script = document.createElement('script');
+    script.src = bundlesJsUrl(ref);
+    script.defer = true;
+    script.onload = function () {
+      console.log(
+        '✅ Lunel Bundles: Loaded successfully (v' +
+          LUNEL_BUNDLES_CONFIG_VERSION +
+          ', ref ' +
+          ref +
+          ')',
+      );
+    };
+    script.onerror = function () {
+      if (allowMainFallback && ref !== 'main') {
+        console.warn('Lunel Bundles: ref "' + ref + '" failed, retrying @main');
+        loadBundlesJs('main', false);
+        return;
+      }
+      console.error('❌ Lunel Bundles: Failed to load. Check GitHub file URL.');
+    };
+    document.head.appendChild(script);
+  }
+
+  const explicit = sanitizeGitRef(window.LUNEL_BUNDLES_JS_REF_BRANCH);
+  if (explicit) {
+    loadBundlesJs(explicit, false);
+  } else {
+    loadBundlesJs('v' + LUNEL_BUNDLES_CONFIG_VERSION, true);
+  }
 })();

@@ -1,297 +1,239 @@
 /* Add custom CSS styles below */
 
-/*====== Lunel — product bundles (scoped #lunel-bundles-root, prefix .lunel-bundles__) ====== */
-
-#lunel-bundles-root.lunel-bundles,
-#lunel-bundles-root.lunel-bundles *,
-#lunel-bundles-root.lunel-bundles *::before,
-#lunel-bundles-root.lunel-bundles *::after {
-    box-sizing: border-box;
-}
+/*====== Lunel — product bundles Start =======================================
+ * Lunel — product bundles (scoped under #lunel-bundles-root) product details page.
+ */
 
 #lunel-bundles-root.lunel-bundles {
-    width: 100%;
-    max-width: 100%;
-    margin: 16px 0;
-    padding: 0;
-    contain: layout style;
-    font-family: inherit;
-    overflow: hidden;
+  margin: 22px 0 16px;
+  contain: layout style;
+  isolation: isolate;
 }
 
-#lunel-bundles-root.lunel-bundles .lunel-bundles__wrap {
-    width: 100%;
-    max-width: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+#lunel-bundles-root .lunel-bundles__heading {
+  margin: 0 0 14px;
+  font-size: 24px;
+  font-weight: 800;
+  color: #111;
+  text-align: start;
 }
 
-#lunel-bundles-root.lunel-bundles .lunel-bundles__heading {
-    margin: 0 0 16px;
-    padding: 0;
-    font-size: clamp(1.25rem, 4vw, 1.65rem);
-    font-weight: 800;
-    color: #212529;
-    text-align: right;
-    letter-spacing: -0.02em;
-    line-height: 1.25;
+#lunel-bundles-root .lunel-bundles__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
 }
 
-#lunel-bundles-root.lunel-bundles .lunel-bundles__grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: clamp(12px, 3vw, 20px);
-    align-items: stretch;
-    width: 100%;
-    max-width: 100%;
-    margin: 0;
-    padding: 0;
+#lunel-bundles-root .lunel-bundles__grid.three-columns {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-#lunel-bundles-root.lunel-bundles .lunel-bundles__grid:has(> *:nth-child(3n):last-child) {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+#lunel-bundles-root .lunel-bundles__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 18px 14px 16px;
+  border-radius: 14px;
+  background: #f9f9f9;
+  border: 2px solid #e5e7eb;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
+  -webkit-tap-highlight-color: transparent;
 }
 
-@media (max-width: 540px) {
-    #lunel-bundles-root.lunel-bundles .lunel-bundles__grid,
-    #lunel-bundles-root.lunel-bundles .lunel-bundles__grid:has(> *:nth-child(3n):last-child) {
-        grid-template-columns: minmax(0, 1fr);
-    }
+#lunel-bundles-root .lunel-bundles__card--selected {
+  border-color: #111;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.06);
 }
 
-#lunel-bundles-root.lunel-bundles .lunel-bundles__card {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-    min-height: 0;
-    margin: 0;
-    padding: 12px 12px 14px;
-    border-radius: 20px;
-    background: #f8f9fa;
-    border: 3px solid #dee2e6;
-    text-decoration: none;
-    color: inherit;
-    overflow: hidden;
-    -webkit-tap-highlight-color: transparent;
-    transition:
-        border-color 0.2s ease,
-        background-color 0.2s ease,
-        box-shadow 0.2s ease;
-    direction: rtl;
-    unicode-bidi: isolate;
+/* ============== top_badges ============== */
+#lunel-bundles-root .lunel-bundles__top_badges {
+  position: absolute;
+  top: -12px;
+  inset-inline-start: 50%;
+  transform: translateX(50%);
+
+  display: flex;
+  gap: 4px;
+  flex-wrap: nowrap;
+
+  color: white;
+  font-weight: 800;
+  font-size: 14px;
+  line-height: 1.1;
 }
 
-#lunel-bundles-root.lunel-bundles .lunel-bundles__card:hover {
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+#lunel-bundles-root .lunel-bundles__top_badge_item {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  padding: 1px 10px;
+  border-radius: 2px;
+  background: #ffeb3b;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
+
+  white-space: nowrap; /* 👈 prevents text wrapping */
 }
 
-#lunel-bundles-root.lunel-bundles .lunel-bundles__card:focus-visible {
-    outline: 3px solid #212529;
-    outline-offset: 2px;
+#lunel-bundles-root .lunel-bundles__top_badge_item.orange-badge {
+  background: #f24821 !important;
 }
 
-#lunel-bundles-root.lunel-bundles .lunel-bundles__card--selected {
-    background: #ffffff;
-    border-color: #212529;
-    box-shadow: none;
+#lunel-bundles-root .lunel-bundles__top_badge_item.green-badge {
+  background: #26b33d !important;
 }
 
-#lunel-bundles-root.lunel-bundles .lunel-bundles__card--selected:hover {
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+/* 10-scallop white disk: same shell for seal (#1) and flame (emoji) */
+#lunel-bundles-root .lunel-bundles__top_badge_item .badge,
+#lunel-bundles-root
+  .lunel-bundles__top_badge_item
+  .lunel-bundles__top_badge_flame {
+  /* 10 scallops: cubic Beziers (smooth), ro/ri close + short handles = rounded lobes */
+  --lunel-scallop-mask: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Cpath%20fill%3D%22white%22%20d%3D%22M50.00%2C6.00%20C61.50%2C6.00%2050.81%2C10.31%2061.74%2C13.86%20C72.68%2C17.41%2066.56%2C7.64%2075.86%2C14.40%20C85.17%2C21.16%2073.98%2C18.36%2080.74%2C27.66%20C87.50%2C36.97%2088.29%2C25.47%2091.85%2C36.40%20C95.40%2C47.34%2088.00%2C38.50%2088.00%2C50.00%20C88.00%2C61.50%2095.40%2C52.66%2091.85%2C63.60%20C88.29%2C74.53%2087.50%2C63.03%2080.74%2C72.34%20C73.98%2C81.64%2085.17%2C78.84%2075.86%2C85.60%20C66.56%2C92.36%2072.68%2C82.59%2061.74%2C86.14%20C50.81%2C89.69%2061.50%2C94.00%2050.00%2C94.00%20C38.50%2C94.00%2049.19%2C89.69%2038.26%2C86.14%20C27.32%2C82.59%2033.44%2C92.36%2024.14%2C85.60%20C14.83%2C78.84%2026.02%2C81.64%2019.26%2C72.34%20C12.50%2C63.03%2011.71%2C74.53%208.15%2C63.60%20C4.60%2C52.66%2012.00%2C61.50%2012.00%2C50.00%20C12.00%2C38.50%204.60%2C47.34%208.15%2C36.40%20C11.71%2C25.47%2012.50%2C36.97%2019.26%2C27.66%20C26.02%2C18.36%2014.83%2C21.16%2024.14%2C14.40%20C33.44%2C7.64%2027.32%2C17.41%2038.26%2C13.86%20C49.19%2C10.31%2038.50%2C6.00%2050.00%2C6.00%20Z%22%2F%3E%3C%2Fsvg%3E');
+
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  background-color: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+  line-height: 1;
+  -webkit-mask-image: var(--lunel-scallop-mask);
+  mask-image: var(--lunel-scallop-mask);
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
 }
 
-/* Badge row: inside card; RTL row → first badge end (right), second start (left) with space-between */
-#lunel-bundles-root.lunel-bundles .lunel-bundles__ribbons {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    width: 100%;
-    max-width: 100%;
-    flex-shrink: 0;
-    margin: 0 0 12px;
-    padding: 0;
-    min-width: 0;
-    pointer-events: none;
+#lunel-bundles-root
+  .lunel-bundles__top_badge_item
+  .lunel-bundles__top_badge_flame {
+  font-size: 11px;
 }
 
-#lunel-bundles-root.lunel-bundles .lunel-bundles__ribbons--multi {
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 8px;
+#lunel-bundles-root .lunel-bundles__top_badge_item .lunel-bundles__badge-num {
+  position: relative;
+  z-index: 1;
+  font-size: 8.5px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.04em;
 }
 
-#lunel-bundles-root.lunel-bundles .lunel-bundles__ribbon {
-    display: inline-flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 6px;
-    padding: 6px 10px 6px 8px;
-    border-radius: 2px;
-    font-size: 11px;
-    font-weight: 800;
-    line-height: 1.25;
-    color: #fff;
-    white-space: normal;
-    max-width: 100%;
-    min-width: 0;
-    direction: ltr;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+#lunel-bundles-root .lunel-bundles__top_badge_item.orange-badge .badge,
+#lunel-bundles-root
+  .lunel-bundles__top_badge_item.orange-badge
+  .lunel-bundles__badge-num {
+  color: #ff4d24;
 }
 
-#lunel-bundles-root.lunel-bundles .lunel-bundles__ribbon-label {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    direction: rtl;
-    text-align: right;
-    max-width: min(160px, 100%);
+#lunel-bundles-root .lunel-bundles__top_badge_item.green-badge .badge,
+#lunel-bundles-root
+  .lunel-bundles__top_badge_item.green-badge
+  .lunel-bundles__badge-num {
+  color: #26b33d;
+}
+/* ============== top_badges ============== */
+
+/* ============== bottom_badges ============== */
+#lunel-bundles-root .lunel-bundles__bottom_badges {
+  position: absolute;
+  bottom: -12px;
+  inset-inline-start: 50%;
+  transform: translateX(50%);
+
+  display: flex;
+  gap: 6px;
+  flex-wrap: nowrap;
+
+  color: red;
+  font-weight: 800;
+  font-size: 14px;
+  line-height: 1.1;
 }
 
-#lunel-bundles-root.lunel-bundles .lunel-bundles__ribbon--green {
-    background: #28a745;
+#lunel-bundles-root .lunel-bundles__bottom_badge_item {
+  padding: 6px 14px;
+  border-radius: 2px;
+  background: #ffeb3b;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
+
+  white-space: nowrap; /* 👈 prevents text wrapping */
+}
+/* ============== bottom_badges ============== */
+
+#lunel-bundles-root .lunel-bundles__badge {
+  position: absolute;
+  top: -12px;
+  inset-inline-start: 50%;
+  transform: translateX(50%);
+  padding: 6px 14px;
+  border-radius: 2px;
+  background: #ffeb3b;
+  color: #111;
+  font-weight: 800;
+  font-size: 14px;
+  line-height: 1.1;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
 }
 
-#lunel-bundles-root.lunel-bundles .lunel-bundles__ribbon--orange {
-    background: #ff4d24;
+#lunel-bundles-root .lunel-bundles__media {
+  width: 112px;
+  height: 72px;
+  background: transparent;
+  overflow: visible;
+  display: grid;
+  place-items: center;
 }
 
-#lunel-bundles-root.lunel-bundles .lunel-bundles__ribbon--red {
-    background: #ff4d24;
+#lunel-bundles-root .lunel-bundles__img {
+  margin-top: 10px;
+  max-width: 112px;
+  max-height: 72px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
 }
 
-#lunel-bundles-root.lunel-bundles .lunel-bundles__ribbon-seal {
-    flex-shrink: 0;
-    display: grid;
-    place-items: center;
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    background: #fff;
+#lunel-bundles-root .lunel-bundles__label {
+  font-size: 18px;
+  font-weight: 800;
+  color: #111;
+  line-height: 1.25;
+  text-align: center;
+  padding: 0 6px;
+  margin-bottom: 10px;
+  margin-top: 25px;
 }
 
-#lunel-bundles-root.lunel-bundles .lunel-bundles__ribbon-seal-inner {
-    font-size: 9px;
-    font-weight: 900;
-    line-height: 1;
+@media (max-width: 640px) {
+  #lunel-bundles-root .lunel-bundles__grid {
+    gap: 10px;
+  }
+
+  #lunel-bundles-root .lunel-bundles__card {
+    padding: 16px 12px 14px;
+  }
+
+  #lunel-bundles-root .lunel-bundles__media {
+    width: 104px;
+    height: 66px;
+  }
+
+  #lunel-bundles-root .lunel-bundles__label {
+    font-size: 16px;
+  }
 }
-
-#lunel-bundles-root.lunel-bundles .lunel-bundles__ribbon--green .lunel-bundles__ribbon-seal-inner {
-    color: #28a745;
-}
-
-#lunel-bundles-root.lunel-bundles .lunel-bundles__ribbon--orange .lunel-bundles__ribbon-seal-inner,
-#lunel-bundles-root.lunel-bundles .lunel-bundles__ribbon--red .lunel-bundles__ribbon-seal-inner {
-    color: #ff4d24;
-}
-
-#lunel-bundles-root.lunel-bundles .lunel-bundles__ribbon-flame {
-    flex-shrink: 0;
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    background: #fff;
-    display: grid;
-    place-items: center;
-    font-size: 12px;
-    line-height: 1;
-}
-
-#lunel-bundles-root.lunel-bundles .lunel-bundles__body {
-    flex: 1 1 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 12px;
-    min-width: 0;
-    min-height: 0;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    max-width: 100%;
-}
-
-#lunel-bundles-root.lunel-bundles .lunel-bundles__media {
-    width: 100%;
-    max-width: min(100%, 168px);
-    align-self: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    padding: 10px 12px;
-    background: #ffffff;
-    border-radius: 14px;
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
-    min-width: 0;
-}
-
-#lunel-bundles-root.lunel-bundles .lunel-bundles__img {
-    display: block;
-    max-width: 100%;
-    width: auto;
-    height: auto;
-    max-height: clamp(3.5rem, 22vw, 6rem);
-    object-fit: contain;
-}
-
-#lunel-bundles-root.lunel-bundles .lunel-bundles__label {
-    width: 100%;
-    max-width: 100%;
-    margin: 0;
-    padding: 0 2px;
-    font-size: clamp(14px, 3.8vw, 16px);
-    font-weight: 800;
-    color: #212529;
-    line-height: 1.4;
-    text-align: right;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-}
-
-#lunel-bundles-root.lunel-bundles .lunel-bundles__discount-row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-width: 100%;
-    flex-shrink: 0;
-    margin-top: auto;
-    padding-top: 12px;
-    min-width: 0;
-}
-
-#lunel-bundles-root.lunel-bundles .lunel-bundles__discount {
-    display: block;
-    max-width: 100%;
-    margin: 0;
-    padding: 8px 16px;
-    background: #ffff00;
-    color: #dc3545;
-    font-weight: 800;
-    font-size: clamp(13px, 3.5vw, 15px);
-    line-height: 1.25;
-    white-space: normal;
-    overflow-wrap: break-word;
-    text-align: center;
-    border-radius: 0;
-}
-
-@media (max-width: 360px) {
-    #lunel-bundles-root.lunel-bundles .lunel-bundles__grid {
-        gap: 10px;
-    }
-
-    #lunel-bundles-root.lunel-bundles .lunel-bundles__card {
-        padding: 10px 10px 12px;
-        border-radius: 16px;
-    }
-}
-
 /*=========== Lunel — product bundles End ======================================= */
