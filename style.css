@@ -2,6 +2,10 @@
 
 /*====== Lunel — product bundles (aligned with demo/newcard.html) ============*/
 
+#lunel-bundles-root {
+  font-family: var(--font-main), -apple-system, BlinkMacSystemFont !important;
+}
+
 #lunel-bundles-root.lunel-bundles {
   margin: 22px 0 16px;
   contain: layout style;
