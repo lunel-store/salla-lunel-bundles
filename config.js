@@ -7,7 +7,7 @@
   'use strict';
 
   // Bump when you change config, bundles.js, or image assets (loader + fallbacks use v{VERSION} then main).
-  var LUNEL_BUNDLES_CONFIG_VERSION = '7.1.8';
+  var LUNEL_BUNDLES_CONFIG_VERSION = '7.1.9';
 
   var LUNEL_GITHUB_REPO = 'lunel-store/salla-lunel-bundles';
   var JSDELIVR_PREFIX =
@@ -70,7 +70,7 @@
             id: 'bundle-1',
             metadata: {
               discountText: CATALOG['bundle-1'].discountText,
-              topRibbon: { text: 'أفضل قيمة', tone: 'blue', type: 'seal' },
+              topRibbon: { text: 'أفضل قيمة', tone: 'blue', type: 'money' },
             },
           },
           {
@@ -95,7 +95,7 @@
             id: 'bundle-2',
             metadata: {
               discountText: CATALOG['bundle-2'].discountText,
-              topRibbon: { text: 'وصل حديثًا', tone: 'blue', type: 'seal' },
+              topRibbon: { text: 'وصل حديثًا', tone: 'blue', type: 'arrows' },
             },
           },
           {
@@ -120,14 +120,14 @@
             id: 'bundle-2',
             metadata: {
               discountText: CATALOG['bundle-2'].discountText,
-              topRibbon: { text: 'وصل حديثًا', tone: 'blue', type: 'seal' },
+              topRibbon: { text: 'وصل حديثًا', tone: 'blue', type: 'arrows' },
             },
           }, ,
           {
             id: 'bundle-1',
             metadata: {
               discountText: CATALOG['bundle-1'].discountText,
-              topRibbon: { text: 'أفضل قيمة', tone: 'blue', type: 'seal' },
+              topRibbon: { text: 'أفضل قيمة', tone: 'blue', type: 'money' },
             },
           },
           {

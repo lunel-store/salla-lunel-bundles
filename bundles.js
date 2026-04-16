@@ -135,6 +135,68 @@
           </svg>
         </span>
       `.trim();
+    } else if (type === 'arrows'){
+      iconHtml = `
+      <span class="badge" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+          <!-- background -->
+          <rect width="18" height="18" fill="none"/>
+
+          <!-- cloud (scalloped) -->
+          <g fill="#fff">
+            <circle cx="64" cy="64" r="34"/>
+            <circle cx="64" cy="28" r="18"/>
+            <circle cx="89" cy="36" r="18"/>
+            <circle cx="100" cy="60" r="18"/>
+            <circle cx="92" cy="88" r="18"/>
+            <circle cx="64" cy="100" r="18"/>
+            <circle cx="36" cy="92" r="18"/>
+            <circle cx="28" cy="64" r="18"/>
+            <circle cx="36" cy="36" r="18"/>
+          </g>
+
+          <!-- fast-forward (same blue as background) -->
+          <g fill="#00A3FF">
+            <path d="M46 48 L66 64 L46 80 Z"/>
+            <path d="M66 48 L86 64 L66 80 Z"/>
+          </g>
+        </svg>
+      </span>
+      `.trim();
+    } else if (type === 'money') {
+      iconHtml = `
+      <span class="badge" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <rect width="18" height="18" fill="none"/>
+
+          <g fill="#fff">
+            <circle cx="64" cy="64" r="34"/>
+            <circle cx="64" cy="28" r="18"/>
+            <circle cx="92" cy="38" r="18"/>
+            <circle cx="100" cy="64" r="18"/>
+            <circle cx="92" cy="90" r="18"/>
+            <circle cx="64" cy="100" r="18"/>
+            <circle cx="36" cy="90" r="18"/>
+            <circle cx="28" cy="64" r="18"/>
+            <circle cx="36" cy="38" r="18"/>
+          </g>
+
+          <g transform="translate(64 64) rotate(6) translate(-64 -64)">
+            <rect x="36" y="50" width="56" height="34" rx="8" fill="#0090E0"/>
+            <rect x="42" y="56" width="44" height="22" rx="4" fill="#fff"/>
+            <circle cx="64" cy="67" r="6" fill="#0090E0"/>
+            <circle cx="64" cy="67" r="1.6" fill="#fff"/>
+          </g>
+
+          <g transform="translate(64 64) rotate(-3) translate(-64 -64)">
+            <rect x="34" y="42" width="60" height="36" rx="8" fill="#00A3FF"/>
+            <rect x="40" y="48" width="48" height="24" rx="4" fill="#fff"/>
+            <circle cx="64" cy="60" r="7" fill="#00A3FF"/>
+            <circle cx="64" cy="60" r="2" fill="#fff"/>
+          </g>
+        </svg>
+      </span>
+      `.trim();
     }
 
     return `<span class="lunel-bundles__top_badge_item ${tone}-badge">${iconHtml}${iconHtml ? ' ' : ''}${text}</span>`;
