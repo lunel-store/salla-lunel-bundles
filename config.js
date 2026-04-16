@@ -7,7 +7,7 @@
   'use strict';
 
   // Bump when you change config, bundles.js, or image assets (loader + fallbacks use v{VERSION} then main).
-  var LUNEL_BUNDLES_CONFIG_VERSION = '7.1.9';
+  var LUNEL_BUNDLES_CONFIG_VERSION = '7.2.0';
 
   var LUNEL_GITHUB_REPO = 'lunel-store/salla-lunel-bundles';
   var JSDELIVR_PREFIX =
@@ -122,7 +122,7 @@
               discountText: CATALOG['bundle-2'].discountText,
               topRibbon: { text: 'وصل حديثًا', tone: 'blue', type: 'arrows' },
             },
-          }, ,
+          },
           {
             id: 'bundle-1',
             metadata: {
