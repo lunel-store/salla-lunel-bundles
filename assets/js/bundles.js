@@ -190,7 +190,8 @@
           ">
         `;
 
-        const isSelected = bundle.productId === currentProductId;
+        const isSelected =
+          String(bundle.productId) === String(currentProductId);
 
         return `
             <a class="lunel-bundles__card${isSelected ? ' lunel-bundles__card--selected' : ''}${hasRibbons}"
