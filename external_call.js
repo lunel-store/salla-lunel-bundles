@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  var LUNEL_BUNDLES_CONFIG_VERSION = '7.2.8';
+  var LUNEL_BUNDLES_CONFIG_VERSION = '7.2.9';
   var LUNEL_GITHUB_REPO = 'lunel-store/lunel-bundles';
   var JSDELIVR_PREFIX =
     'https://cdn.jsdelivr.net/gh/' + LUNEL_GITHUB_REPO + '@';
