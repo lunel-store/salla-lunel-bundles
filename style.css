@@ -3,7 +3,10 @@
 /*====== Lunel — product bundles (aligned with demo/newcard.html) ============*/
 
 #lunel-bundles-root {
-  font-family: var(--font-main), -apple-system, BlinkMacSystemFont !important;
+  font-family:
+    var(--font-main),
+    -apple-system,
+    BlinkMacSystemFont !important;
 }
 
 #lunel-bundles-root.lunel-bundles {
@@ -55,8 +58,8 @@
 #lunel-bundles-root .lunel-bundles__top_badges {
   position: absolute;
   top: -16px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 5%;
+  transform: translateX(0%);
   color: #fff;
   font-size: 11px;
   font-weight: bold;
@@ -75,7 +78,7 @@
   flex-direction: row;
   align-items: center;
   gap: 8px;
-  padding: 3px 12px;
+  padding: 2px 12px;
   border-radius: 15px;
   white-space: nowrap;
   font-size: 14px;
@@ -96,7 +99,9 @@
 
 /* Seal + flame disks (from demo/newcard.html) */
 #lunel-bundles-root .lunel-bundles__top_badge_item .badge,
-#lunel-bundles-root .lunel-bundles__top_badge_item .lunel-bundles__top_badge_flame {
+#lunel-bundles-root
+  .lunel-bundles__top_badge_item
+  .lunel-bundles__top_badge_flame {
   --lunel-scallop-mask: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Cpath%20fill%3D%22white%22%20d%3D%22M50.00%2C6.00%20C61.50%2C6.00%2050.81%2C10.31%2061.74%2C13.86%20C72.68%2C17.41%2066.56%2C7.64%2075.86%2C14.40%20C85.17%2C21.16%2073.98%2C18.36%2080.74%2C27.66%20C87.50%2C36.97%2088.29%2C25.47%2091.85%2C36.40%20C95.40%2C47.34%2088.00%2C38.50%2088.00%2C50.00%20C88.00%2C61.50%2095.40%2C52.66%2091.85%2C63.60%20C88.29%2C74.53%2087.50%2C63.03%2080.74%2C72.34%20C73.98%2C81.64%2085.17%2C78.84%2075.86%2C85.60%20C66.56%2C92.36%2072.68%2C82.59%2061.74%2C86.14%20C50.81%2C89.69%2061.50%2C94.00%2050.00%2C94.00%20C38.50%2C94.00%2049.19%2C89.69%2038.26%2C86.14%20C27.32%2C82.59%2033.44%2C92.36%2024.14%2C85.60%20C14.83%2C78.84%2026.02%2C81.64%2019.26%2C72.34%20C12.50%2C63.03%2011.71%2C74.53%208.15%2C63.60%20C4.60%2C52.66%2012.00%2C61.50%2012.00%2C50.00%20C12.00%2C38.50%204.60%2C47.34%208.15%2C36.40%20C11.71%2C25.47%2012.50%2C36.97%2019.26%2C27.66%20C26.02%2C18.36%2014.83%2C21.16%2024.14%2C14.40%20C33.44%2C7.64%2027.32%2C17.41%2038.26%2C13.86%20C49.19%2C10.31%2038.50%2C6.00%2050.00%2C6.00%20Z%22%2F%3E%3C%2Fsvg%3E');
 
   flex-shrink: 0;
@@ -119,7 +124,9 @@
   mask-position: center;
 }
 
-#lunel-bundles-root .lunel-bundles__top_badge_item .lunel-bundles__top_badge_flame {
+#lunel-bundles-root
+  .lunel-bundles__top_badge_item
+  .lunel-bundles__top_badge_flame {
   font-size: 11px;
 }
 
@@ -133,17 +140,23 @@
 }
 
 #lunel-bundles-root .lunel-bundles__top_badge_item.orange-badge .badge,
-#lunel-bundles-root .lunel-bundles__top_badge_item.orange-badge .lunel-bundles__badge-num {
+#lunel-bundles-root
+  .lunel-bundles__top_badge_item.orange-badge
+  .lunel-bundles__badge-num {
   color: #f24822;
 }
 
 #lunel-bundles-root .lunel-bundles__top_badge_item.badge-badge .badge,
-#lunel-bundles-root .lunel-bundles__top_badge_item.badge-badge .lunel-bundles__badge-num {
+#lunel-bundles-root
+  .lunel-bundles__top_badge_item.badge-badge
+  .lunel-bundles__badge-num {
   color: #0095f6;
 }
 
 #lunel-bundles-root .lunel-bundles__top_badge_item.green-badge .badge,
-#lunel-bundles-root .lunel-bundles__top_badge_item.green-badge .lunel-bundles__badge-num {
+#lunel-bundles-root
+  .lunel-bundles__top_badge_item.green-badge
+  .lunel-bundles__badge-num {
   color: #27b43e;
 }
 
