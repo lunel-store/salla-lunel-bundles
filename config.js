@@ -35,32 +35,61 @@
     var CATALOG = {
       'bundle-1': {
         id: 'bundle-1',
+        productId: 1904366049,
         title: 'مجموعة التفتيح والنضارة',
         subtitle: 'الروتين المتقدم للتفتيح والنضارة',
         path: 'lunel-refund-return-guarantee-3x3/p1904366049',
         imageUrl: lunelJsdelivrImage('p1904366049.webp'),
         fallbackImageUrl: lunelJsdelivrImage('p1904366049.webp', true),
         discountText: 'وفر %35',
+        topRibbon: {
+          text: 'أفضل قيمة',
+          tone: 'blue',
+          type: 'money',
+          color: '#0095f6',
+        },
       },
       'bundle-2': {
         id: 'bundle-2',
+        productId: 1644875761,
         title: 'مجموعة الهالات والترطيب',
         subtitle: 'الروتين الأساسي للتفتيح والنضارة',
         path: 'lunel-refund-return-guarantee-3x3/p1644875761',
         imageUrl: lunelJsdelivrImage('p1644875761.webp'),
         fallbackImageUrl: lunelJsdelivrImage('p1644875761.webp', true),
         discountText: 'وفر %40',
+        topRibbon: {
+          text: 'وصل حديثًا',
+          tone: 'blue',
+          type: 'arrows',
+          color: '#0095f6',
+        },
       },
       'bundle-3': {
         id: 'bundle-3',
+        productId: 2094249977,
         title: 'مجموعة لونيل المتكاملة',
         subtitle: 'الروتين المتكامل للتفتيح والنضارة',
         path: 'lunel-refund-return-guarantee-3x3/p2094249977',
         imageUrl: lunelJsdelivrImage('p2094249977.webp'),
         fallbackImageUrl: lunelJsdelivrImage('p2094249977.webp', true),
         discountText: 'وفر %42',
+        topRibbon: {
+          text: 'الأكثر مبيعًا',
+          tone: 'green',
+          type: 'seal',
+          color: '#27b43e',
+        },
+        topRibbon2: {
+          text: 'ينفد خلال أيام',
+          tone: 'orange',
+          type: 'flame',
+          color: '#f24822',
+        },
       },
     };
+
+    window.LUNEL_BUNDLES_CATALOG = CATALOG;
 
     var BY_PRODUCT = {
       1904366049: {
@@ -71,19 +100,15 @@
             id: 'bundle-1',
             metadata: {
               discountText: CATALOG['bundle-1'].discountText,
-              topRibbon: { text: 'أفضل قيمة', tone: 'blue', type: 'money' },
+              topRibbon: CATALOG['bundle-1'].topRibbon,
             },
           },
           {
             id: 'bundle-3',
             metadata: {
               discountText: CATALOG['bundle-3'].discountText,
-              topRibbon: { text: 'الأكثر مبيعًا', tone: 'green', type: 'seal' },
-              topRibbon2: {
-                text: 'ينفد خلال أيام',
-                tone: 'orange',
-                type: 'flame',
-              },
+              topRibbon: CATALOG['bundle-3'].topRibbon,
+              topRibbon2: CATALOG['bundle-3'].topRibbon2,
             },
           },
         ],
@@ -96,19 +121,15 @@
             id: 'bundle-2',
             metadata: {
               discountText: CATALOG['bundle-2'].discountText,
-              topRibbon: { text: 'وصل حديثًا', tone: 'blue', type: 'arrows' },
+              topRibbon: CATALOG['bundle-2'].topRibbon,
             },
           },
           {
             id: 'bundle-3',
             metadata: {
               discountText: CATALOG['bundle-3'].discountText,
-              topRibbon: { text: 'الأكثر مبيعًا', tone: 'green', type: 'seal' },
-              topRibbon2: {
-                text: 'ينفد خلال أيام',
-                tone: 'orange',
-                type: 'flame',
-              },
+              topRibbon: CATALOG['bundle-3'].topRibbon,
+              topRibbon2: CATALOG['bundle-3'].topRibbon2,
             },
           },
         ],
@@ -121,26 +142,22 @@
             id: 'bundle-2',
             metadata: {
               discountText: CATALOG['bundle-2'].discountText,
-              topRibbon: { text: 'وصل حديثًا', tone: 'blue', type: 'arrows' },
+              topRibbon: CATALOG['bundle-2'].topRibbon,
             },
           },
           {
             id: 'bundle-1',
             metadata: {
               discountText: CATALOG['bundle-1'].discountText,
-              topRibbon: { text: 'أفضل قيمة', tone: 'blue', type: 'money' },
+              topRibbon: CATALOG['bundle-1'].topRibbon,
             },
           },
           {
             id: 'bundle-3',
             metadata: {
               discountText: CATALOG['bundle-3'].discountText,
-              topRibbon: { text: 'الأكثر مبيعًا', tone: 'green', type: 'seal' },
-              topRibbon2: {
-                text: 'ينفد خلال أيام',
-                tone: 'orange',
-                type: 'flame',
-              },
+              topRibbon: CATALOG['bundle-3'].topRibbon,
+              topRibbon2: CATALOG['bundle-3'].topRibbon2,
             },
           },
         ],
