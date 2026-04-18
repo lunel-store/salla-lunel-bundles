@@ -1,12 +1,17 @@
 (function () {
   'use strict';
 
+  if (window.__lunelProductBadgesLoaded) return;
+  window.__lunelProductBadgesLoaded = true;
+
   function updateProductBadge({ id, target, ribbon }) {
     const card = document.getElementById(id);
     if (!card) return;
 
     const container = card.querySelector(`.${target}`);
     if (!container) return;
+
+    var svg = '';
 
     // Update background (optional)
     if (ribbon.color) {
@@ -46,15 +51,14 @@
     }
   }
 
-  var products = window.LUNEL_BUNDLES_CATALOG;
+  var products = window.LUNEL_PRODUCTS;
 
   if (products) {
     Object.values(products).forEach((product) => {
-      console.log(product.productId, product.topRibbon, product.topRibbon2);
       updateProductBadges({
         id: product.productId,
-        ribbon1: product.topRibbon,
-        ribbon2: product.topRibbon2,
+        ribbon1: product.ribbon1,
+        ribbon2: product.ribbon2,
       });
     });
   }

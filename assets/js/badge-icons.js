@@ -1,26 +1,13 @@
 /**
  * Lunel Bundles — shared constants (version, CDN URLs, DOM ids, ribbon SVG HTML).
- * Load first. Initializes once (see __lunelBundlesConstantsLoaded).
+ * Load first. Initializes once (see __lunelBadgeIconsLoaded).
  * Optional: set window.LUNEL_LOCAL_ENV = true in an inline script before this file for local asset paths.
  */
 (function () {
   'use strict';
 
-  if (window.__lunelBundlesConstantsLoaded) return;
-  window.__lunelBundlesConstantsLoaded = true;
-
-  window.LUNEL_BUNDLES_CONFIG_VERSION = '7.3.3';
-  window.LUNEL_JSDELIVR_PREFIX =
-    'https://cdn.jsdelivr.net/gh/lunel-store/lunel-bundles@';
-  window.LUNEL_JSDELIVR_TAG_PREFIX =
-    window.LUNEL_JSDELIVR_PREFIX + 'v' + window.LUNEL_BUNDLES_CONFIG_VERSION;
-  window.LUNEL_JSDELIVR_MAIN_PREFIX = window.LUNEL_JSDELIVR_PREFIX + 'main';
-
-  if (typeof window.LUNEL_LOCAL_ENV !== 'boolean') {
-    window.LUNEL_LOCAL_ENV = false;
-  }
-
-  window.LUNEL_BUNDLES_ROOT_ID = 'lunel-bundles-root';
+  if (window.__lunelBadgeIconsLoaded && window.LUNEL_BUNDLE_BADGE_ICONS) return;
+  window.__lunelBadgeIconsLoaded = true;
 
   window.LUNEL_BUNDLE_BADGE_ICONS = {
     seal: `
