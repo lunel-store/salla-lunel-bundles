@@ -2,7 +2,7 @@
   'use strict';
 
   const LUNEL_JSDELIVR_LINK =
-    'https://cdn.jsdelivr.net/gh/lunel-store/lunel-bundles@v8.0.3/init.js';
+    'https://cdn.jsdelivr.net/gh/lunel-store/lunel-bundles@v8.0.4/init.js';
 
   if (window.__lunelInitBootstrapExecuted) return;
   window.__lunelInitBootstrapExecuted = true;
