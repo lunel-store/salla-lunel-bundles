@@ -6,16 +6,17 @@
 (function () {
   'use strict';
 
-  // Bump when you change config, bundles.js, or image assets (loader + fallbacks use v{VERSION} then main).
-  var LUNEL_BUNDLES_CONFIG_VERSION = '7.3.0';
+  if (!window.__lunelBundlesConstantsLoaded) {
+    console.error('Lunel Bundles: load lunel-constants.js before config.js');
+    return;
+  }
 
-  var LUNEL_GITHUB_REPO = 'lunel-store/lunel-bundles';
-  var JSDELIVR_PREFIX =
-    'https://cdn.jsdelivr.net/gh/' + LUNEL_GITHUB_REPO + '@';
-  var JSDELIVR_TAG_PREFIX =
-    JSDELIVR_PREFIX + 'v' + LUNEL_BUNDLES_CONFIG_VERSION;
-  var JSDELIVR_MAIN_PREFIX = JSDELIVR_PREFIX + 'main';
-  var LUNEL_LOCAL_ENV = false;
+  // Bump version in lunel-constants.js when you change assets (loader uses v{VERSION} then main).
+  var LUNEL_BUNDLES_CONFIG_VERSION = window.LUNEL_BUNDLES_CONFIG_VERSION;
+  var JSDELIVR_PREFIX = window.LUNEL_JSDELIVR_PREFIX;
+  var JSDELIVR_TAG_PREFIX = window.LUNEL_JSDELIVR_TAG_PREFIX;
+  var JSDELIVR_MAIN_PREFIX = window.LUNEL_JSDELIVR_MAIN_PREFIX;
+  var LUNEL_LOCAL_ENV = window.LUNEL_LOCAL_ENV;
 
   // ============================================
   // PART 1: CONFIGURATION (Edit this for your products)
