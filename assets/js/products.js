@@ -73,9 +73,9 @@
         color: '#27b43e',
       },
       ribbon2: {
-        text: 'ينفد خلال أيام',
+        text: 'توصيل مجاني',
         tone: 'orange',
-        type: 'flame',
+        type: 'free_delivery',
         color: '#f24822',
       },
     },
