@@ -1,6 +1,8 @@
 (function () {
   'use strict';
 
+  window.OUT_OF_STOCK_PRODUCTS = [];
+
   const LUNEL_JSDELIVR_LINK =
     'https://cdn.jsdelivr.net/gh/lunel-store/lunel-bundles@v8.0.9/init.js';
 

@@ -8,6 +8,9 @@
   const LUNEL_BUNDLES_ROOT_ID =
     window.LUNEL_BUNDLES_ROOT_ID || 'lunel-bundles-root';
   const BUNDLES_PRODUCTS = window.LUNEL_PRODUCTS || {};
+  window.OUT_OF_STOCK_PRODUCTS = Array.isArray(window.OUT_OF_STOCK_PRODUCTS)
+    ? window.OUT_OF_STOCK_PRODUCTS
+    : [];
 
   console.log('Lunel Bundles: Script loaded');
 
@@ -145,6 +148,14 @@
   }
 
   function shouldShowBundle(bundle, currentProductId) {
+    const oos = window.OUT_OF_STOCK_PRODUCTS;
+    if (
+      Array.isArray(oos) &&
+      oos.length < 3 &&
+      oos.some((id) => String(id) === String(bundle.productId))
+    ) {
+      return false;
+    }
     const skip = bundle.skip_if_product;
     if (skip == null || skip === '') return true;
     return String(skip) !== String(currentProductId);
