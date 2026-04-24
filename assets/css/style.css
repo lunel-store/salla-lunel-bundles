@@ -259,6 +259,6 @@ div#salla-metadata strong {
 .cart-submit-wrap
   salla-button
   button.s-button-element.s-button-btn.s-button-solid.s-button-wide.s-button-primary.s-button-loader-center {
-  border-radius: 25px !important;
+  border-radius: 12px !important;
   font-size: 1rem !important;
 }
