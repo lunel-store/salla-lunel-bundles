@@ -108,6 +108,9 @@
       return loadScript(urlFor('assets/js/product-badges.js'));
     })
     .then(function () {
+      return loadScript(urlFor('assets/js/custom-script.js'));
+    })
+    .then(function () {
       return loadScript(urlFor('assets/js/out-of-stock.js'));
     })
     .catch(function (err) {
