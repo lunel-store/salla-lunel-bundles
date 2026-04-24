@@ -518,6 +518,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ===== شارة الأكثر مبيعًا و"ينفد خلال أيام" (مبسطة) =====
   const addBadgeToProducts = () => {
+    // If the source-of-truth badge system is present, rely on it to avoid
+    // rendering "old" badges then replacing them later.
+    if (typeof window.__lunelApplyProductBadges === 'function') {
+      window.__lunelApplyProductBadges();
+      return;
+    }
+
     const targets = document.querySelectorAll(
       '.product-807064556 .product-entry__image, .product_page_cat_807064556 .details-slider-wrapper salla-slider',
     );

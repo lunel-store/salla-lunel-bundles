@@ -75,13 +75,13 @@
         id: id,
         target: 'product-bestSellers',
         ribbon: ribbon1,
-        userId: true,
+        useId: true,
       });
       updateProductBadge({
         id: 'details-slider-' + id,
         target: 'product-bestSellers',
         ribbon: ribbon1,
-        userId: true,
+        useId: true,
       });
       updateProductBadge({
         id: id,
@@ -111,13 +111,13 @@
         id: id,
         target: 'product-outWithin',
         ribbon: ribbon2,
-        userId: true,
+        useId: true,
       });
       updateProductBadge({
         id: 'details-slider-' + id,
         target: 'product-outWithin',
         ribbon: ribbon2,
-        userId: true,
+        useId: true,
       });
       updateProductBadge({
         id: id,
@@ -144,15 +144,58 @@
     }
   }
 
-  var products = window.LUNEL_PRODUCTS;
+  function applyAllProductBadges() {
+    var products = window.LUNEL_PRODUCTS;
+    if (!products) return false;
 
-  if (products) {
     Object.values(products).forEach((product) => {
+      if (!product || !product.productId) return;
       updateProductBadges({
         id: product.productId,
         ribbon1: product.ribbon1,
         ribbon2: product.ribbon2,
       });
+    });
+    return true;
+  }
+
+  // Expose a tiny public hook so other scripts can trigger a refresh
+  window.__lunelApplyProductBadges = applyAllProductBadges;
+
+  // Apply ASAP (in case data+DOM are already ready)
+  applyAllProductBadges();
+
+  // If products/cards arrive later (AJAX/slider), keep attempting and re-apply on DOM changes.
+  var retryCount = 0;
+  var maxRetries = 40; // ~10s max (40 * 250ms)
+  var retryTimer = null;
+  function scheduleRetry() {
+    if (retryTimer) return;
+    retryTimer = setTimeout(function () {
+      retryTimer = null;
+      retryCount++;
+      var ok = applyAllProductBadges();
+      if (!ok && retryCount < maxRetries) scheduleRetry();
+    }, 250);
+  }
+
+  if (!window.LUNEL_PRODUCTS) scheduleRetry();
+
+  var moPending = null;
+  var observer = new MutationObserver(function () {
+    if (moPending) clearTimeout(moPending);
+    moPending = setTimeout(function () {
+      moPending = null;
+      applyAllProductBadges();
+    }, 80);
+  });
+
+  if (document.body) {
+    observer.observe(document.body, { childList: true, subtree: true });
+  } else {
+    document.addEventListener('DOMContentLoaded', function () {
+      observer.observe(document.body, { childList: true, subtree: true });
+      applyAllProductBadges();
     });
   }
 })();
