@@ -20,8 +20,10 @@
     if (container) container.style.display = 'none';
   }
 
-  function updateProductBadge({ id, target, ribbon }) {
-    const card = document.getElementById(id);
+  function updateProductBadge({ id, target, ribbon, useId = true }) {
+    const card = useId
+      ? document.getElementById(id)
+      : document.querySelector(`[data-product-id="${id}"]`);
     if (!card) return;
 
     let container = card.querySelector(`.${CSS.escape(target)}`);
@@ -70,11 +72,19 @@
         id: id,
         target: 'product-bestSellers',
         ribbon: ribbon1,
+        userId: true,
       });
       updateProductBadge({
         id: 'details-slider-' + id,
         target: 'product-bestSellers',
         ribbon: ribbon1,
+        userId: true,
+      });
+      updateProductBadge({
+        id: id,
+        target: 'product-bestSellers',
+        ribbon: ribbon1,
+        useId: false,
       });
     } else {
       removeProductBadgeTarget(id, 'product-bestSellers');
@@ -85,11 +95,19 @@
         id: id,
         target: 'product-outWithin',
         ribbon: ribbon2,
+        userId: true,
       });
       updateProductBadge({
         id: 'details-slider-' + id,
         target: 'product-outWithin',
         ribbon: ribbon2,
+        userId: true,
+      });
+      updateProductBadge({
+        id: id,
+        target: 'product-outWithin',
+        ribbon: ribbon2,
+        useId: false,
       });
     } else {
       removeProductBadgeTarget(id, 'product-outWithin');
