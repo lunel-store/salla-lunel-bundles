@@ -9,7 +9,7 @@
   window.__lunelBundlesInitStarted = true;
 
   window.LUNEL_JSDELIVR_LINK =
-    'https://cdn.jsdelivr.net/gh/lunel-store/lunel-bundles@v8.1.4/';
+    'https://cdn.jsdelivr.net/gh/lunel-store/lunel-bundles@v8.1.5/';
 
   function urlFor(file) {
     const name = typeof file === 'string' ? file.replace(/^\/+/, '') : '';
