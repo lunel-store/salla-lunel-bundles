@@ -193,7 +193,7 @@
 
         const salePrice = String(bundle.salePrice || '').trim();
         const salePriceBlock = salePrice
-          ? `<strong class="total-price-single text-[var(--product-price-color)] font-bold text-xl inline-block" style="font-size: 20px !important;">${escapeHtml(salePrice)} <i class="sicon-sar"></i></strong>`
+          ? `<strong class="total-price-single text-[var(--product-price-color)] font-bold text-xl inline-block" style="font-size: 20px !important;margin: 0px 8px;">${escapeHtml(salePrice)} <i class="sicon-sar"></i></strong>`
           : '';
 
         const pricesBlock =
