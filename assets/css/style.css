@@ -57,7 +57,7 @@
 
 #lunel-bundles-root .lunel-bundles__top_badges {
   position: absolute;
-  top: -16px;
+  top: -12px;
   left: 5%;
   transform: translateX(0%);
   color: #fff;
@@ -201,11 +201,12 @@
 #lunel-bundles-root .lunel-bundles__discount-text {
   font-size: 14px;
   background: #ffff3a;
-  padding: 5px 10px;
-  border-radius: 4px;
+  padding: 2px 25px;
+  border-radius: 75px;
   font-weight: bold;
   white-space: nowrap;
   color: #f24822;
+  line-height: normal;
 }
 
 @media (max-width: 640px) {

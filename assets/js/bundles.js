@@ -183,8 +183,30 @@
         // Discount
         const discountRaw = String(bundle.discountText || '').trim();
         const discountBlock = discountRaw
-          ? `<div class="lunel-bundles__discount-wrap"><span class="lunel-bundles__discount-text">${escapeHtml(discountRaw)}</span></div>`
+          ? `<span class="lunel-bundles__discount-text">${escapeHtml(discountRaw)}</span>`
           : '';
+
+        const price = String(bundle.price || '').trim();
+        const priceBlock = price
+          ? `<span class="before-price-single line-through decoration-[var(--product-price-offer)] font-normal text-[var(--product-price-offer)]" style="font-size: 15px !important;">${escapeHtml(price)} <i class="sicon-sar"></i></span>`
+          : '';
+
+        const salePrice = String(bundle.salePrice || '').trim();
+        const salePriceBlock = salePrice
+          ? `<strong class="total-price-single text-[var(--product-price-color)] font-bold text-xl inline-block" style="font-size: 20px !important;">${escapeHtml(salePrice)} <i class="sicon-sar"></i></strong>`
+          : '';
+
+        const pricesBlock =
+          priceBlock || salePriceBlock
+            ? `<div dir="rtl">${salePriceBlock}${priceBlock}</div>`
+            : '';
+
+        const leftBox = `
+          <div class="lunel-bundles__discount-wrap">
+              ${pricesBlock}
+              ${discountBlock}
+          </div>
+        `;
 
         // image
         const image = `
@@ -218,7 +240,7 @@
                         ${subtitleBlock}
                     </div>
                 </div>
-                ${discountBlock}
+                ${leftBox}
             </a>`;
       })
       .join('');
